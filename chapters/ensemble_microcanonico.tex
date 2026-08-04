@@ -23,12 +23,12 @@
     \begin{statementbox}{Gás Ideal Monoatômico}
         O \textbf{Gás Ideal Monoatômico} consistem em $N$ partículas não interagentes e indistinguíveis que ocupam um volume $V$ no espaço.
     \end{statementbox}
-    
+
 \section{Encontrando a multiplicidade}
 
-    A tarefa principal no ensemble microcanônico é determinar a multiplicidade $\Omega$ do macroestado. A partir da entropia de Boltzmann, conseguimos descrever completamente a termodinâmica do sistema. Os exercícios resolvidos mostram \textit{como} determinar a multiplicidade em diversos casos.
-
-    Caso o sistema tenha níveis discretos de energia, esta tarefa se resume a responder à pergunta \textit{de quantas formas possíveis podemos distribuir a energia $U$ entre as $N$ partículas?} Em outras palavras, um problema de física se torna um problema de análise combinatória.
+    A principal tarefa no ensemble microcanônico é determinar a multiplicidade $\Omega$ do macrosestado correspondente. Caso o sistema tenha níveis discretos de energia, esta tarefa se resume a responder à pergunta \textit{de quantas formas possíveis podemos distribuir a energia $U$ entre as $N$ partículas?} Em outras palavras, é uma tarefa de análise combinatória.
+    
+    Sistemas com espectro contínuo de energia representam uma dificuldade maior e são tratados somente na \cref{sec:espec_continuo_de_energia}. Vamos começar com um exemplo simples e seguir incrementando.
 
     \begin{solved}{Multiplicidade de três partículas de spin 1/2}{multiplicidade_paramagneto_tres_particulas}
         Considere o sistema do paramagnetno de dois estados com energia total fixa $U=-\upmu_m\mathrm{H}$ e formado por $N=3$ spins. Encontre a multiplicidade deste sistema.
@@ -67,11 +67,58 @@
         Levando em conta que tanto os quanta de energia quanto os osciladores são indistinguíveis, concluímos que \[\Omega(U,N)=\frac{(M+N-1)!}{M!(N-1)!},\] que podemos escrever em termos da energia $U=M\varepsilon$: \[\Omega(U,N)=\frac{\left(\frac{U}{\varepsilon}+N-1\right)!}{\left(\frac{U}{\varepsilon}\right)!(N-1)!}.\]
     \end{solved}
 
+    Para tratar o gás ideal, precisamos tomar alguns cuidados. Como o espectro de energia não é discreto, não podemos mais ``contar estados''; por isso, deixamos o tema para a \cref{sec:espec_continuo_de_energia}. Contudo, no exercício abaixo abordamos o problema clássico do gás de rede.
+
+    \begin{solved}{Gás de rede}{}
+        Considere um gás de rede constituído por $N$ partículas indistinguíveis distribuídas em $V$ células (com $N\leq V$). Suponha que cada célula possa estar vazia ou ocupada por uma única partícula. Encontre a multiplicidade deste sistema.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent O problema consiste em distribuir as $N$ partículas nas $V$ células do sistema. Para isso, a primeira pode `escolher' dentre um total de $V$ células; a segunda, $V-1$ (exclui-se a célula ocupada pela primeira); e assim por diante. Em outras palavras, são
+        \[ V\times(V-1)\times(V-2)\times\cdots\times(V-N+1) = \frac{V!}{(V-N)!}\]
+        maneiras de ocupar as células. Como as partículas são indistinguíveis, para obtermos a multiplicidade correta basta dividir o nosso resultado por $N!$:
+        \begin{equation}\label{eq:multiplicidade_gas_de_rede}
+            \Omega(N,V) = \frac{V!}{(V-N)!N!}\,.
+        \end{equation}
+    \end{solved}
+
+    \begin{statementbox}{Fatoração da multiplicidade}
+        Quando um sistema $\mathcal{S}$ pode ser dividido em dois (ou mais) subsistemas independentes, $\mathcal{S}=\mathcal{S}_a\oplus\mathcal{S}_b$, a multiplicidade pode ser fatorada por:
+        \begin{equation}
+            \Omega_{\mathcal{S}} = \Omega_{a} \times \Omega_{b}\,,
+        \end{equation}
+        uma vez que, para cada estado do subsistema $\mathcal{S}_a$, existem $\Omega_{b}$ estados disponíveis ao subsistema $\mathcal{S}_b$ (por serem independentes).
+    \end{statementbox}
+
+    \begin{solved}{Um modelo de adsorção}{}
+        Considere um gás de rede cujas $N$ partículas podem ser adsorvidas em uma superfície. O recipiente disponível para o gás contém $V$ sítios, e a superfície de adsorção, $M$ sítios. As partículas não interagem entre si, mas apenas com a superfície. Assim, uma partícula solta no gás possui energia $U=0$, enquanto uma partícula adsorvida possui energia $U=-\varepsilon$ ($\varepsilon>0$). O sistema está isolado com energia $U=-n\varepsilon$, em que $n\leq N$. Encontre a multiplicidade do sistema.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Uma vez que as partículas do gás não interagem entre si, podemos tratar este problema como dois subsistemas independentes: as partículas do gás no "recipiente", e as partículas adsorvidas. Isso nos permite escrever a multiplicidade como:
+        \[ \Omega = \Omega_{\text{livres}}\times\Omega_{\text{adsorvidas}}\,. \]
+
+        Como a energia total é $U=-n\varepsilon$, temos $n$ partículas adsorvidas e, consequentemente, $N-n$ partículas livres. Assim, basta usar a \cref{eq:multiplicidade_gas_de_rede} para o primeiro termo:
+        \[ \Omega_{\text{livres}} = \frac{V!}{(V-N-n)!(N-n)!}\,.\]
+
+        Para o segundo, consideramos o problema é análogo: são $M$ sítios de adosorção ao longo dos quais podemos distribuir as $n$ partículas (indistinguíveis) adsorvidas:
+        \[ \Omega_{\text{adsorvidas}} = \frac{M!}{(M-n)!n!}\,.\]
+
+        Juntando os dois termos, temos:
+        \begin{equation}
+            \Omega = \frac{V!}{(V-N-n)!(N-n)!}\times\frac{M!}{(M-n)!n!}\,,
+        \end{equation}
+        ou, voltando para a variável da energia ($n=-U/\varepsilon$):
+        \begin{equation}
+            \Omega = \frac{V!}{(V-N+U/\varepsilon)!(N+U/\varepsilon)!}\times\frac{M!}{(M+U/\varepsilon)!(-U/\varepsilon)!}\,.
+        \end{equation}
+
+        Com este problema esperamos demonstrar de maneira geral a fundamental propriedade de \textit{fatoração} da multiplicidade.
+    \end{solved}
+
 \section{Termodinâmica em ação}
 
-    A partir da multiplicidade do sistema, podemos extrair todas as propriedades termodinâmicas do sistema a partir da entropia de Boltzmann. A Figura \ref{fig:maquina_da_mecanica_estatistica} ilustra o processo: basta \textit{girar a manivela}.
+    A partir da multiplicidade, podemos extrair todas as propriedades termodinâmicas do sistema com a entropia de Boltzmann. A Figura \ref{fig:maquina_da_mecanica_estatistica} ilustra o processo: basta \textit{girar a manivela} da mecânica estatística; isto é, transformamos as grandezas estatísticas em potenciais da termodinâmica clássica.
 
-    \begin{figure}[h!]
+    \begin{figure}[htb]
         \centering
         \resizebox{0.65\linewidth}{!}{\input{figures/stat_mech_machine.tex}}
         \caption{A máquina da mecânica estatística: com as funções de partição num dado ensemble ($\Omega$, $\mathcal{Z}_C$, $\mathcal{Z}_G$), basta ``girarmos'' a manivela do maquinário para extrairmos toda a termodinâmica a partir das informações microscópicas do sistema. Adaptado de blundell (ad. ref).}
@@ -82,7 +129,7 @@
         A partir da multiplicidade do paramagneto de dois estados, \[\Omega(U,N)=\frac{N!}{\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!},\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
         \tcblower
         \noindent\textbf{Resolução:}\\
-        \indent Temos \[S(U,N)=k_B\ln(\Omega)=k_B\left[\ln(N!)+\ln\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!+\ln\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!\right].\] No limite termodinâmico, podemos usar a fórmula de Stirling (cf. Eq. \eqref{eq_appx:approximacao_de_stirling}), com $\ppu=U/N$ fixo:
+        \indent Temos \[S(U,N)=k_B\ln(\Omega)=k_B\left[\ln(N!)+\ln\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!+\ln\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!\right].\] No limite termodinâmico, podemos usar a fórmula de Stirling (cf. \cref{eq_appx:approximacao_de_stirling}), com $\ppu=U/N$ fixo:
     \end{solved}
 
     \begin{solved}{Entropia do sólido de Einstein}{}
@@ -99,7 +146,7 @@
         \indent Temos \[S(U,N)=k_B\ln(\Omega)\]
     \end{solved}
 
-\starredsection{Espectro contínuo de energia}
+\starredsection{Espectro contínuo de energia\label{sec:espec_continuo_de_energia}}
 
     Agora voltamos nossa atenção a sistemas com espectro de energia contínuo, isto é, que não pode ser determinado com o uso de múltiplos inteiros de um valor. Nesse caso, a multiplicidade \textbf{não é} determinada com o uso de análise combinatória, mas com uma integral sobre o espaço de fase do sistema. Vamos verificar para dois casos simples e, depois, generalizar o método num terceiro caso mais robusto.
 
