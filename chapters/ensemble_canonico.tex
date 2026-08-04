@@ -1,0 +1,77 @@
+\chapter{Ensemble Canônico}
+
+    O chamado \textit{Ensemble Canônico} é definido considerando um sistema em contato com um reservatório térmico à temperatura $T$. Em vez de procurarmos a multiplicidade de um macroestado de energia fixa, olhamos para a \textit{distribuição} de estados $j$ segundo o \textit{peso de Boltzmann}, com a probabilidade de um estado sendo:
+    \begin{equation}
+        P(j) \propto e^{-E(j)\beta},
+    \end{equation}
+    com \[\beta=\frac{1}{k_BT}.\] De fato, para conhecer a termodinâmica de um sistema no ensemble canônico, basta conhecer a sua \textit{função de partição canônica}.
+
+    \begin{statementbox}{Função de partição canônica}
+        Dado um ensemble canônico, definimos sua função de partição $\mathcal{Z}_C$ como a soma dos pesos de Boltzmann sobre \textit{todos} os estados de equilíbrio possíveis ao sistema:
+        \begin{equation}
+            \mathcal{Z}_C(T,V,N) = \sum_{j}e^{-E(j)\beta}.
+        \end{equation}
+        Esta função está ligada à energia livre de Helmholtz pela relação:
+        \begin{equation}
+            F(T,V,N)=-k_BT\ln\mathcal{Z}_C.
+        \end{equation}
+    \end{statementbox}
+
+\section{Fatoração de Função de Partição \texorpdfstring{$\mathcal{Z}_C$}{Z\_C}}
+
+    Uma propriedade fundamental de $\mathcal{Z}_C$, que facilita muito a aplicação do ensemble canônico, é a capacidade de \textit{fatoração}.
+
+\begin{statementbox}{Fatoração de $\mathcal{Z}_C$}{}
+    Caso possamos escrever as energias com índices independentes, $m_1,m_2,\dots,m_{\alpha}$ (por exemplo, no caso em que a energia pode ser escrita por $E(\lbrace m\rbrace)=\varepsilon_1(m_1)+\varepsilon_2(m_2)+\cdots+\varepsilon_{\alpha}(m_{\alpha})$), podemos fatorar a função de partição canônica:
+    \begin{equation}
+        \mathcal{Z}_C = \sum_{m}e^{-E(m)\beta}=\left(\sum_{m_1}e^{-E(m_1)\beta}\right)\left(\sum_{m_2}e^{-E(m_2)\beta}\right)\cdots\left(\sum_{m_{\alpha}}e^{-E(m_{\alpha})\beta}\right).
+    \end{equation}
+\end{statementbox}
+
+\section{Sistemas Discretos no Ensemble Canônico}
+
+\begin{solved}{Sólido de Einstein no Ensemble Canônico}{canonical-einstein}
+
+    Determine a função de partição canônica $Z_C$ para o sólido de Einstein e a correspondente energia livre de Helmholtz.
+    
+    \tcblower 
+    \textbf{Resolução:}\\
+    Como cada partícula é independente, fatoramos a função de partição \[Z_C(\beta,N)=\big(z_1\big)^N,\] onde $z_1$ é a função de partição para um único oscilador e $N$, o número de constituintes do sistema. Lembrando que a energia de um oscilador é da forma $E_1=j\varepsilon$, com $j$ inteiro, temos: \[z_1=\sum_{j=0}^{\infty}e^{-j\varepsilon\beta}=\sum_{j=0}^{\infty}\left(e^{-\varepsilon\beta}\right)^j=\frac{1}{1-e^{-\varepsilon\beta}}\implies Z_C(\beta,N)=\left(\frac{1}{1-e^{-\varepsilon\beta}}\right)^N,\] onde usamos a série geométrica.
+
+    Deste modo, a energia livre $F(T,N)$ é dada por
+    \[F(T,N)=-kT\ln Z_C(\beta,N) =NkT\ln\big(1-e^{-\varepsilon/kT}\big).\]
+\end{solved}
+
+\section{Sistemas Clássicos no Ensemble Canônico}
+
+\begin{solved}{Gás Ideal no Ensemble Canônico}{canonical-ideal-gas}
+    Determine a função de partição canônica $Z_C$ para o gás ideal \textit{monoatômico} e a correspondente energia livre de Helmholtz.
+    \tcblower
+    \textbf{Resolução:}
+
+    Vamos aplicar a fatoração em função de partícula única, uma vez que as partículas do gás ideal não interagem entre si. Assim, considerando que cada partícula está contida num volume $V$, a sua hamiltoniana é \[\mathcal{H}_i=\frac{\vec\p_i^2}{2m},\] daí a função de partícula única é dada por: \[z_1=\frac{1}{h^3}\underbrace{\int_V\diff^3\R}_{=V}\overbrace{\int \exp\left(-\frac{\vec\p^2}{2m}\beta\right)\diff^3\p}^{\text{Integral gaussiana: }=(2\pi m/\beta)^{3/2}}=\frac{V}{h^3}\left(\frac{2\pi m}{\beta}\right)^{3/2}=\left(\frac{2\pi m V^{2/3}}{\beta h^2}\right)^{3/2},\] usando a integral gaussiana (cf. Eq. \eqref{eq_appx:integral_gaussiana}).
+
+    Não podemos nos esquecer que as partículas do gás ideal são \textbf{indistinguíveis}! Logo, a função de partição canônica é: \[ Z_C(\beta,N) = \frac{1}{N!}\left(\frac{2\pi m V^{2/3}}{\beta h^2}\right)^{3N/2},\] levando à energia livre de Helmholtz:
+    \[ F=-kT\ln\left(\frac{2\pi m V^{2/3}}{\beta h^2}\right)^{\frac{3N}{2}}+kT\ln N! \approx 
+    -\frac{3NkT}{2}\ln\left(\frac{2\pi m V^{2/3}}{\beta h^2}\right)+NkT\ln N,\] com a aproximação de Stirling. Mas podemos escrever \[N\ln N = \frac{3}{2}N\ln N^{2/3} = -\frac{3}{2}N\ln N^{-1/2},\]
+    e ficamos com:
+    \[ F(T,V,N) = -\frac{3NkT}{2}\ln\left(\frac{2\pi m V^{2/3}}{\beta h^2N^{2/3}}\right) = -\frac{3NkT}{2}\ln\left(\frac{2\pi mk V^{2/3}T}{ h^2N^{2/3}}\right),\] que é devidamente extensiva.
+\end{solved}
+
+
+\newpage
+\section*{Exercícios Propostos}
+    \begin{questionsbox}[Propriedades da Função de Partição Canônica]
+        \begin{question}
+            A probabilidade de um estado $j$ no ensemble canônico, após normalizá-la, é \[P(j) =\frac{1}{\mathcal{Z}_C} e^{-E(j)\beta}.\] Considerando a energia do sistema como \[U=\sum_j E(j)P(j)=\langle E\rangle,\] mostre que \[F(T,V,N)=-k_BT\ln\mathcal{Z}_C\] a partir da entropia de Gibbs, \[S=-k_B\sum_{j}P(j)\ln P(j),\] lembrando que $F=U-TS$.
+        \end{question}
+        \begin{answer}
+            Obtemos $S=k_B\ln\mathcal{Z}_C-\frac{1}{T} U\implies k\ln\mathcal{Z}_C=-\frac{1}{T}\big(U-TS\big)$
+        \end{answer}
+    \end{questionsbox}
+
+\section*{Problemas Propostos}
+
+\begin{problem}[subtitle={Método do ponto-sela}]
+    
+\end{problem}

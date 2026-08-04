@@ -1,0 +1,94 @@
+% --- GLOBAL CONFIG FOR COLOR BOX --- %%
+\tcbset{
+    % 1. Base style
+    baseBox/.style={
+        enhanced,
+        breakable,
+        frame hidden,
+        boxrule=0pt,
+        fonttitle=\bfseries,
+        middle=1em,
+        before upper={\setlength{\parindent}{1.5em}},
+        before lower={\setlength{\parindent}{1.5em}},
+        top=1em,
+        boxed title style={
+            boxrule=0pt
+        },
+        sharp corners
+    },
+    % 2. Color boxes
+    colorBox/.style={
+        baseBox,
+        boxed title style={sharp corners},
+        attach boxed title to top left={
+            yshift=-\tcboxedtitleheight/2,
+            xshift=1em
+        }
+    },
+    % 3. Theorem box
+    theoremBox/.style={
+        baseBox,
+        description font=\itshape,
+        separator sign={~--~},
+        segmentation style={draw=PrimaryColor, dashed, line width=1pt},
+        attach boxed title to top left={
+            yshift=-\tcboxedtitleheight/2,
+            xshift=1em
+        }
+    }
+}
+
+%% --- BOX CONFIG --- %%
+\newtcbtheorem[number within=chapter]{solved}{Exercício Resolvido}{
+    theoremBox,
+    colback=SecondaryBackground,
+    colframe=SecondaryBackground,
+    coltitle=black,
+    borderline west={1.5pt}{0pt}{PrimaryColor},
+    boxed title style={
+        colback=AccentBackground
+    },
+    overlay unbroken={
+        \fill[PrimaryColor] 
+            (frame.north west) rectangle ++(1em, -1pt);
+        \fill[PrimaryColor, path fading=east] 
+            (frame.south west) rectangle ([yshift=1pt]frame.south east);
+    },
+    overlay first={
+        \fill[PrimaryColor] 
+            (frame.north west) rectangle ++(1em, -1pt);
+    },
+    overlay last={
+        \fill[PrimaryColor, path fading=east] 
+            (frame.south west) rectangle ([yshift=1pt]frame.south east);
+    }
+}{solved}
+
+\newtcolorbox{questionsbox}[1][]{
+    colorBox,
+    colback=AccentWhite,
+    colframe=AccentWhite,
+    coltitle=black,
+    title={#1},
+    boxed title style={
+        colback=AccentBackground
+    }
+}
+
+\newtcolorbox{statementbox}[2][]{
+    colorBox,
+    coltitle=ThemeColor,
+    colback=PrimaryBackground,
+    title={#2},
+    #1,
+    borderline west={1.5pt}{0pt}{ThemeColor},
+    boxed title style={
+        colback=PrimaryBackground,
+        colframe=PrimaryBackground
+    },
+    top=2em,
+    attach boxed title to top left={
+            yshift=-\tcboxedtitleheight,
+            xshift=0.2em
+        }
+}

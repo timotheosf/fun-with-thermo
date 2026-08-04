@@ -1,0 +1,39 @@
+\chapter{Fórmulas matemáticas úteis}
+
+\textbf{Aproximação de Stirling:}
+\begin{equation}\label{eq_appx:approximacao_de_stirling}
+    \ln N! \approx N\ln N-N
+\end{equation}
+
+Séries úteis:
+\begin{enumerate}
+    \item \textbf{Série binomial:}
+    \begin{equation}\label{eq_appx:serie_binomial}
+        (1+x)^{\alpha}=\sum_{n=0}^{\infty}\binom{\alpha}{n}x^n,
+    \end{equation}
+    com $x,\alpha\in\mathbb{R}$;
+    \item \textbf{Série binomial negativa:}
+    \begin{equation}\label{eq_appx:serie_binomial_negativa}
+    \frac{1}{(1-x)^{\alpha}}=\sum_{n=0}^{\infty}\binom{\alpha+n-1}{n}x^n,
+    \end{equation}
+    com $|x|<1$ e $\alpha\in\mathbb{R}$;
+    \item \textbf{Série geométrica:} um caso particular da série binomial negativa, com $\alpha=1$:
+    \begin{equation}\label{eq_appx:serie_geometrica}
+        \frac{1}{1-x}=\sum_{n=0}^{\infty}x^n,
+    \end{equation}
+    com $|x|<1$;
+\end{enumerate}
+
+Integrais úteis:
+\begin{enumerate}
+    \item \textbf{Integral gaussiana:}
+    \begin{equation}\label{eq_appx:integral_gaussiana}
+        \int_{-\infty}^{\infty}e^{-\alpha x^2}\diff x = \sqrt{\frac{\pi}{\alpha},}
+    \end{equation}
+    com $\alpha>0$;
+    \item \textbf{Volume de uma hiperesfera:} considerando um raio $R$ e dimensão n:
+    \begin{equation}\label{eq_appx:volume_hiperesfera}
+        V_n(R) = \idotsint_{0\leq x_1^2+\cdots+x_n^2\leq R^2}\diff x_1\cdots\diff x_n=\frac{2\pi^{n/2}}{n\Gamma\big(n/2\big)}R^n=\frac{\pi^{n/2}}{\big(n/2\big)!}R^n,
+    \end{equation}
+    onde $\Gamma$ é a função \textit{gamma}.
+\end{enumerate}

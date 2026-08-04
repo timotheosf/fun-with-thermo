@@ -1,0 +1,178 @@
+\chapter{Ensemble Microcanônico}
+
+    O chamado \textit{Ensemble Microcanônico} é definido considerando um valor \textit{fixo} da energia interna de um sistema, $U$, bem como do número de partículas, $N$, e do volume $V$. Procura-se, então, a multiplicidade do macroestado correspondente, $\Omega$ -- isto é, o número de microestados que correspondem à mesma configuração macroscópica. A partir da multiplicidade $\Omega$, podemos obter todas as informações da termodinâmica do sistema a partir da entropia de Boltzmann.
+
+    \begin{statementbox}[label=def:entropia_de_boltzmann]{Entropia de Boltzmann}
+        Dado um sistema no macroestado definido pelos valores $(U,V,N)$ e com multiplicidade $\Omega$, a entropia de Boltzmann é a função de estado $S$ definida por:
+        \begin{equation}
+            S(U,V,N\big)=k_B\ln\Omega,
+        \end{equation}
+        onde $k_B$ é a constante de Boltzmann, cujo valor exato é $k_B=1,380 649\cdot10^{-23}J/K$.
+    \end{statementbox}
+
+     Neste capítulo, vamos resolver três problemas clássicos com a teoria do Ensemble Microcanônico, a saber: o Paramagneto de dois estados, o Sólido de Einstein, e o Gás Ideal Monoatômico.
+
+     \begin{statementbox}{Paramagneto de dois estados}
+        O \textbf{Paramagneto de dois estados} consiste em $N$ spins 1/2 que não interagem entre si e sujeitos a um campo magnético uniforme $\mathrm{H}$ aplicado numa dada direção. Cada spin pode ter alinhamento paralelo ao campo, com energia $-\upmu_m\mathrm{H}$, ou antiparalelo ao campo, com energia $+\upmu_m\mathrm{H}$, onde $\upmu_m$ é o momento de dipolo magnético de um spin.
+    \end{statementbox}
+
+    \begin{statementbox}{Sólido de Einstein}
+        O \textbf{Sólido de Einstein} consiste em $N$ osciladores quânticos \textit{localizados} que não interagem entre si. Cada um pode ter energia $E=n\varepsilon$, com $n=0,1,2,\dots$ e $\varepsilon$ o quanta de energia.
+    \end{statementbox}
+
+    \begin{statementbox}{Gás Ideal Monoatômico}
+        O \textbf{Gás Ideal Monoatômico} consistem em $N$ partículas não interagentes e indistinguíveis que ocupam um volume $V$ no espaço.
+    \end{statementbox}
+    
+\section{Encontrando a multiplicidade}
+
+    A tarefa principal no ensemble microcanônico é determinar a multiplicidade $\Omega$ do macroestado. A partir da entropia de Boltzmann, conseguimos descrever completamente a termodinâmica do sistema. Os exercícios resolvidos mostram \textit{como} determinar a multiplicidade em diversos casos.
+
+    Caso o sistema tenha níveis discretos de energia, esta tarefa se resume a responder à pergunta \textit{de quantas formas possíveis podemos distribuir a energia $U$ entre as $N$ partículas?} Em outras palavras, um problema de física se torna um problema de análise combinatória.
+
+    \begin{solved}{Multiplicidade de três partículas de spin 1/2}{multiplicidade_paramagneto_tres_particulas}
+        Considere o sistema do paramagnetno de dois estados com energia total fixa $U=-\upmu_m\mathrm{H}$ e formado por $N=3$ spins. Encontre a multiplicidade deste sistema.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Lembrando que cada spin pode estar em dois estados: `para cima' (paralelo ao campo), $\uparrow$, com energia $\varepsilon_{\uparrow}=-\upmu_m\mathrm{H}$, ou `para baixo' (antiparalelo ao campo), $\downarrow$, com energia $\varepsilon_{\downarrow}=\upmu_m\mathrm{H}$.
+
+        Como a energia total é $-\upmu_m\mathrm{H}$, sabemos devemos ter dois spins $\uparrow$ e um spin $\downarrow$, de modo que \[2\varepsilon_{\uparrow}+1\varepsilon_{\downarrow}=-2\upmu_m\mathrm{H}+\upmu_m\mathrm{H}=-\upmu_m\mathrm{H}.\] Resta determinar \textit{de quantas formas} podemos ter dois spins $\uparrow$ e um $\downarrow$. 
+        
+        Podemos pensar que, inicialmente, todos os três estão no estado $\downarrow$, então escolhemos um spin para colocá-lo no estado $\uparrow$, e depois repetimos com um segundo. Para o primeiro spin, temos 3 opções de escolha, e, para o segundo, temos 2 opções, totalizando $3\cdot2$; contudo, precisamos descontar as permutações possíveis dessa escolha, uma vez que não podemos diferenciar os spins. Concluímos que a multiplicidade é \[\Omega = \frac{\overbrace{3\cdot2}^{\text{Número de escolhas possíveis}}}{\underbrace{2}_{\text{Número de permutações da escolha}}}=3.\]
+
+        Podemos reescrever $\Omega$ numa forma mais interessante. Considerando $N_{\uparrow}=2$ o número de spins no estado $\uparrow$ e $N_{\downarrow}$ o número de spins no estado $\downarrow$, temos: \[\Omega = \frac{3\cdot2}{2}=\frac{3\cdot2\cdot1}{(2\cdot1)\cdot1}=\frac{3!}{2!1!}=\frac{N!}{N_{\uparrow}!N_{\downarrow}!}.\]
+    \end{solved}
+
+    \begin{solved}{Multiplicidade do Paramagneto de dois estados}{multiplicidade_paramagneto_dois_estados}
+    Considere o sistema do paramagnetno de dois estados com energia total fixa $U$ e formado por $N$ spins. Encontre a multiplicidade deste sistema.
+    \tcblower
+    \noindent\textbf{Resolução:}\\
+    \indent Vamos considerar que o número de spins paralelos ao campo é $N_{\uparrow}$, enquanto o número de spins antiparalelos é $N_{\downarrow}$. Claramente, nós temos \[N=N_{\downarrow}+N_{\uparrow},\] bem como \[U=\upmu_m\mathrm{H}\big(N_{\downarrow}-N_{\uparrow}\big).\] Assim, podemos entender o problema como contar todas as formas de colocarmos $N_{\downarrow}$ dos $N$ spins na posição $\downarrow$, e $N_{\uparrow}$ na posição $\uparrow$.
+        
+    Para colocar o primeiro spin na posição $\uparrow$, podemos escolher qualquer um dentre as $N$ opções de spin; para o segundo, são $N-1$ opções, e assim por diante, de modo que escolhemos um total de \[\frac{N!}{(N-N_{\uparrow})!}=\frac{N!}{N_{\downarrow}!}\] spins na posição $\uparrow$ (cf. o Ex. Resolvido \ref{solved:multiplicidade_paramagneto_tres_particulas}).
+    
+    Mas temos que descontar deste número todas as permutações possíveis entre os $N_{\uparrow}$ spins escolhidos, porque não conseguimos distinguir um do outro, e chegamos à nossa multiplicidade: \[\Omega(N_{\uparrow},N)=\frac{N!}{N_{\downarrow}!N_{\uparrow}!}\equiv\binom{N}{N_{\uparrow}}.\]
+    Lembrando que $U=\upmu_m\mathrm{H}\big(N_{\downarrow}-N_{\uparrow}\big)$ e $N=N_{\downarrow}+N_{\uparrow}$, podemos escrever $\Omega$ em termos da energia $U$:
+        \[\Omega(U,N)=\frac{N!}{\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!}.\]
+    \end{solved}
+
+    \begin{solved}{Multiplicidade do sólido de Einstein}{}
+        Considere o sólido de Einstein com energia total fixa $U$ e formado por $N$ spins. Encontre a multiplicidade deste sistema.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Cada oscilador $j$ tem energia $E_j=n_j\varepsilon$, com $n_j$ natural. A energia total é, então, \[U=E_1+E_2+\cdots+E_N=n_1\varepsilon+n_2\varepsilon+\cdots+n_N\varepsilon=M\varepsilon,\] onde $M$ representa o múltiplo total de energia $\varepsilon$ que devemos distribuir nos $N$ osciladores.
+
+        Para o primeiro oscilador, temos um total de $M$ múltiplos de energia; para o segundo, $M-n_1$, e assim por diante, de modo que temos $M!$ formas de distribuir a energia. Mas como também temos que fixar as posições dos osciladores no espaço, nosso problema se torna a distribuição de $M+N-1$ elementos: $M$ múltiplos de energia e $N-1$ osciladores no espaço, em que o $-1$ aparece porque localização do último oscilador é determinada pela colocação dos $N-1$ anteriores (ele fica no lugar ``que sobra'').
+
+        Levando em conta que tanto os quanta de energia quanto os osciladores são indistinguíveis, concluímos que \[\Omega(U,N)=\frac{(M+N-1)!}{M!(N-1)!},\] que podemos escrever em termos da energia $U=M\varepsilon$: \[\Omega(U,N)=\frac{\left(\frac{U}{\varepsilon}+N-1\right)!}{\left(\frac{U}{\varepsilon}\right)!(N-1)!}.\]
+    \end{solved}
+
+\section{Termodinâmica em ação}
+
+    A partir da multiplicidade do sistema, podemos extrair todas as propriedades termodinâmicas do sistema a partir da entropia de Boltzmann. A Figura \ref{fig:maquina_da_mecanica_estatistica} ilustra o processo: basta \textit{girar a manivela}.
+
+    \begin{figure}[h!]
+        \centering
+        \resizebox{0.65\linewidth}{!}{\input{figures/stat_mech_machine.tex}}
+        \caption{A máquina da mecânica estatística: com as funções de partição num dado ensemble ($\Omega$, $\mathcal{Z}_C$, $\mathcal{Z}_G$), basta ``girarmos'' a manivela do maquinário para extrairmos toda a termodinâmica a partir das informações microscópicas do sistema. Adaptado de blundell (ad. ref).}
+        \label{fig:maquina_da_mecanica_estatistica}
+    \end{figure}
+
+    \begin{solved}{Entropia do paramagneto de dois estados}{}
+        A partir da multiplicidade do paramagneto de dois estados, \[\Omega(U,N)=\frac{N!}{\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!},\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Temos \[S(U,N)=k_B\ln(\Omega)=k_B\left[\ln(N!)+\ln\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!+\ln\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!\right].\] No limite termodinâmico, podemos usar a fórmula de Stirling (cf. Eq. \eqref{eq_appx:approximacao_de_stirling}), com $\ppu=U/N$ fixo:
+    \end{solved}
+
+    \begin{solved}{Entropia do sólido de Einstein}{}
+        A partir da multiplicidade do sólido de Einstein, \[\Omega(U,N)=\frac{\left(\frac{U}{\varepsilon}+N-1\right)!}{\left(\frac{U}{\varepsilon}\right)!(N-1)!},\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Temos \[S(U,N)=k_B\ln(\Omega)\]
+    \end{solved}
+
+    \begin{solved}{Entropia do gás ideal monoatômico}{}
+        A partir da multiplicidade do gás ideal, \[\Omega(U,N)=\frac{3N}{2(3N/2)!}\left(\frac{2\pi m}{h^2}\right)^{\frac{3N}{2}}U^{\frac{3N}{2}-1}\delta U,\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Temos \[S(U,N)=k_B\ln(\Omega)\]
+    \end{solved}
+
+\starredsection{Espectro contínuo de energia}
+
+    Agora voltamos nossa atenção a sistemas com espectro de energia contínuo, isto é, que não pode ser determinado com o uso de múltiplos inteiros de um valor. Nesse caso, a multiplicidade \textbf{não é} determinada com o uso de análise combinatória, mas com uma integral sobre o espaço de fase do sistema. Vamos verificar para dois casos simples e, depois, generalizar o método num terceiro caso mais robusto.
+
+    \begin{statementbox}{Multiplicidade com espectro contínuo de energia}
+        Dado um sistema com $N$ graus de liberdade e energia $U$ fixa, integramos sobre todas as posições e momentos acessíveis ao sistema:
+        \[ \Omega(U,N)=\frac{1}{h^{N}}\int\int_{\text{Energia }U} \diff \X_1\diff \X_2\cdots\diff \X_N\diff \p_1\diff \p_2\cdots\diff \p_N,\] onde $h$ é a constante de Planck.
+    \end{statementbox}
+
+    \begin{solved}{Multiplicidade do oscilador harmônico unidimensional}{}
+        Considere um único oscilador harmônico unidimensional de massa $m$ e frequência $\omega$ tem energia fixa, dada por \[U=\frac{\p^2}{2m}+\frac{1}{2}m\omega^2\X^2.\] Determine a multiplicidade deste sistema.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Começamos notando que \[U=\frac{\p^2}{2m}+\frac{1}{2}m\omega^2\X^2\] é uma \textit{equação de elipse} para as variáveis $\p$ e $\X$. Desse modo, a multiplicidade $\Omega$ será dada por uma coroa elíptica, por um pequeno desvio $\delta U$ da energia. 
+        
+        A Figura \ref{fig:oscilador_harmonico_espaco_de_fase} vai nos guiar neste cálculo. A área da elipse maior, com energia $U+\delta U$, é \[\pi\sqrt{\frac{2(U+\delta U)}{m\omega^2}}
+\sqrt{2m(U+\delta U)} = \pi\frac{2(U+\delta U)}{\omega},\] e a área da elipse menor, é \[\pi\frac{2U}{\omega},\] de modo que \[\Omega = \frac{1}{h}\left(\pi\frac{2(U+\delta U)}{\omega}-\pi\frac{2U}{\omega} \right)=\frac{2\pi}{h\omega}\delta U.\] Vemos que, neste caso muito simples, o volume do espaço de fase acessível ao sistema é uma função independente da energia!
+
+        \begin{center}
+            % 1. Coloca a âncora do link no topo e define o tipo
+            \captionsetup{type=figure} 
+            
+            % 2. Insere o seu gráfico TikZ
+            \input{figures/oscilador_harmonico_espaco_de_fase}
+            
+            % 3. Agora você volta a usar o \caption normal (sem o 'of')
+            \caption{Espaço de fase de um oscilador harmônico unidimensional.}
+            \label{fig:oscilador_harmonico_espaco_de_fase}
+        \end{center}
+    \end{solved}
+
+    \begin{solved}{Multiplicidade de uma partícula de gás ideal}{}
+        Considere uma partícula com massa $m$ e energia \[U=\frac{\vec{\p}^2}{2m},\] contida num volume $V$. Determine a multiplicidade deste sistema.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Neste caso, a posição $\vec{\R}$ da partícula é \textit{independente} do seu momento, $\vec{\p}$, de modo que podemos escrever a multiplicidade como \[\Omega = \frac{1}{h^3}\int_V\diff^3\R\int_{U=\vec{\p}^2/2m}\diff^3\p=\frac{V}{h^3}\int_{U=\vec{\p}^2/2m}\diff^3\p.\]
+        Assim, vamos obter a multiplicidade pelo volume de uma coroa esférica por um pequeno desvio $\delta U$ da energia.
+
+        Como $\p^2=2mU$, o raio da esfera maior é $\sqrt{2m(U+\delta U)}$, e o da menor, $\sqrt{2mU}$. Assim: \[\frac{4\pi}{3}\big(2m(U+\delta U)\big)^{3/2}-\frac{4\pi}{3}\big(2mU\big)^{3/2}=\frac{8\pi}{3}m^{3/2}U^{3/2}\left[\left(1+\frac{\delta U}{U}\right)^{3/2}-1\right],\] usando a série binomial (cf. Eq. \eqref{eq_appx:serie_binomial}), \[\frac{8\pi}{3}m^{3/2}U^{3/2}\left[\left(1+\frac{\delta U}{U}\right)^{3/2}-1\right]\approx\frac{8\pi}{3}m^{3/2}U^{3/2}\left[1+\frac{3}{2}\frac{\delta U}{U}-1\right]=4\pi m^{3/2}U^{1/2}\delta U.\] Finalmente, encontramos \[\Omega = \frac{4\pi m^{3/2}V}{h^3}U^{1/2}\delta U.\]
+    \end{solved}
+
+    \begin{solved}{Multiplicidade do Gás Ideal Monoatômico}{}
+        Considere um gás ideal composto por $N$ partículas idênticas de massa $m$, cada uma restringida a se mover num volume $V$ fixo, com energia $U$ dada por \[U=\frac{\vec{\p}^2_1}{2m}+\frac{\vec{\p}^2_2}{2m}+\cdots+\frac{\vec{\p}^2_N}{2m}=\sum_{j=1}^N\frac{\vec{\p}^2_j}{2m}.\] Determine a multiplicidade desse sistema.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Procedemos como no exercício anterior: \[\Omega(U,N)=\frac{1}{h^{3N}}\idotsint_V\diff^3\R_1\cdots\diff^3\R_N\idotsint_{U=\sum\vec{\p}^2_j/2m}\diff^3\p_1\dots\diff^3\p_N.\] A integral sobre a posição de cada uma das partículas leva a $V$, resultando, para as $N$ integrais, em $V^N$. Já a integral sobre os $N$ momentos, utilizaremos o método anterior: corresponde ao volume de uma coroa esférica por um pequeno desvio $\delta U$ da energia.
+
+        Usando a Eq. \eqref{eq_appx:volume_hiperesfera} para o volume de uma hiperesfera de raio $R$, temos: \[V_{3N}(\sqrt{2m(U+\delta U)})=\frac{(2\pi m)^{3N/2}}{\big(3N/2\big)!}(U+\delta U)^{3N/2}\underbrace{\approx}_{\text{Série binomial}}\frac{(2\pi mU)^{3N/2}}{\big(3N/2\big)!}\left(1+\frac{3N}{2}\frac{\delta U}{U}\right),\]
+        de modo que a integral sobre os momentos fica: \[\idotsint_{U=\sum\vec{\p}^2_j/2m}\diff^3\p_1\dots\diff^3\p_N = \frac{3N}{2(3N/2)!}\big(2\pi m\big)^{3N/2}U^{3N/2-1}\delta U,\] resultando em:
+        \[\Omega(U,N)=\frac{3N}{2(3N/2)!}\left(\frac{2\pi m}{h^2}\right)^{\frac{3N}{2}}U^{\frac{3N}{2}-1}\delta U.\] Contudo, entra aqui um problema: precisamos adicionar um fator \textit{ad hoc} a este termo para que o limite termodinâmicos corresponda à correta representação do gás ideal. Comentamos sobre isto no Ex. Resolvido ADICIONAR EXERCÍCIO RESOLVIDO.
+    \end{solved}
+
+\newpage
+\section*{Exercícios Propostos}
+\begin{questionsbox}[Sistemas com energia discreta]
+    \begin{question} %> Callen
+    Considere um sistema de $N$ partículas livres que podem assumir apenas seus estados de energia $0$ e $\varepsilon$ (com $\varepsilon>0$). Sejam $n_0$ e $n_1$ os números de ocupação dos níveis de energia $0$ e $\varepsilon$, respectivamente. A energia total do sistema é $U$.
+    \begin{parts}
+        \item Determine a entropia deste sistema.
+        \item Obtenha a temperatura como uma função de $U$ e mostre que ela pode ser negativa.
+        \item O que acontece quando um sistema com temperatura negativa pode trocar calor com um sistema com temperatura positiva?
+    \end{parts}
+    \end{question}
+    \begin{answer}
+        \begin{parts}
+        \item $\pps(\ppu) = -k\frac{\ppu}{\varepsilon}\ln\big(\varepsilon/\ppu-1\big)+k\ln\big(1-\ppu/\varepsilon\big)$
+        \item $1/T=-k/\varepsilon\ln\big(\varepsilon/\ppu-1\big)$
+    \end{parts}
+    \end{answer}
+\end{questionsbox}
+
+\section*{Problemas Propostos}
+
+\begin{problem}[subtitle={Teorema do retorno de Poicaré}]
+
+    
+\end{problem} 

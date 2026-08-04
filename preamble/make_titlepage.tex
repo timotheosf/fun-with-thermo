@@ -1,0 +1,65 @@
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+
+    % Top spacing
+    \vspace*{2cm}
+
+    % Title
+    {\color{ThemeColor}\Huge\bfseries Diversão com Termoestatística\par}
+    
+    \vspace{0.8cm}
+    
+    % Subtitle with elegant horizontal rules
+    \rule{0.4\linewidth}{0.8pt}\vspace{0.4cm}\par
+    {\Large\itshape Exercícios resolvidos e propostos \\ de termodinâmica estatística\par}
+    \vspace{0.3cm}\rule{0.4\linewidth}{0.8pt}\par
+
+    \vspace*{\fill} 
+
+    % Custom TikZ Illustration for the S-Theorem
+    \begin{tikzpicture}[scale=1.15]
+        % Graph dimensions
+        \def\xmax{11}
+        \def\ymax{4.5}
+        \def\asymptote{3.8}
+        
+        % Subtle shading under the curve
+        \fill[SecondaryColor!20] (0,0) -- (0,0.5) to[out=15,in=180] (\xmax-0.5,\asymptote) -- (\xmax-0.5,0) -- cycle;
+        
+        % Axes
+        \draw[-{Stealth[length=3mm]}, thick, black!80] (-0.2,0) -- (\xmax+0.2,0) node[right, black] {$t$};
+        \draw[-{Stealth[length=3mm]}, thick, black!80] (0,-0.2) -- (0,\ymax) node[above, black] {$S(t)$};
+        
+        % Equilibrium Asymptote (Maximum Entropy)
+        \draw[dashed, thick, black!50] (0,\asymptote) node[left, black!80] {$S_{\text{max}}$} -- (\xmax,\asymptote);
+        
+        % The Entropy Curve
+        \draw[line width=1.8pt, PrimaryColor] (0,0.5) node[left, black!80] {$S_0$} to[out=15,in=180] (\xmax-0.5,\asymptote);
+        
+        % Mathematical Annotation using your custom macros!
+        \node[black] at (\xmax/2, 0.7) {\large $\displaystyle S(t) = -k \int f(\q,\p,t) \log f(\q,\p,t) \, \diff\q\diff\p$};
+    \end{tikzpicture}
+
+    \vspace{2cm}
+
+    \hfill\begin{minipage}[c][2cm][c]{13cm}
+    \begin{flushright}
+       \small\itshape
+        ``So können wir diejenige Größe, welche man gewöhnlich als die Entropie zu bezeichnen pflegt, mit der Wahrscheinlichkeit des betreffenden Zustandes identifizieren.''\\[0.15cm]
+        \color{black!75}\footnotesize
+        (Assim, podemos identificar aquela grandeza, que habitualmente se costuma designar por entropia, com a probabilidade do referido estado.)\\[0.15cm]
+        \raggedleft \color{black}\normalfont\bfseries --- Ludwig Boltzmann, 1877
+    \end{flushright}
+    \end{minipage}
+        
+    \vspace*{\fill} 
+
+    % Authors and Location
+    {\Large\bfseries Iago Barros \& Timóteo Fassoni\par}
+    \vspace{0.6cm}
+    {\large Viçosa, Minas Gerais\par
+    2026\par}
+    
+    \vspace*{1cm}
+\end{titlepage}

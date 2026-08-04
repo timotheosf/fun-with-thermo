@@ -1,0 +1,26 @@
+\begin{tikzpicture}[scale=1]
+
+    % 1. Preenchimento (O "Volume" no espaço de fase / Multiplicidade)
+    % Preenchemos primeiro para que as linhas fiquem por cima
+    \fill[ThemeColor!10!white, even odd rule]
+        %> Elipse energia U
+        (0,0) ellipse (3.5cm and 2.2cm)
+        (0,0) ellipse (3.1cm and 1.85cm);
+
+    % 2. A curva da elipse (Trajetória de energia constante U)
+    \draw[very thick, ThemeColor] (0,0) ellipse (3.5cm and 2.2cm) (0,0) ellipse (3.1cm and 1.85cm);
+
+    % 3. Eixos do Espaço de Fase
+    \draw[->, thick] (-4.5,0) -- (4.5,0) node[right] {$\X$};
+    \draw[->, thick] (0,-3.2) -- (0,3.2) node[above] {$\p$};
+
+    % 4. Marcações (Limites de x e p baseados na equação)
+    % Limites no eixo x (quando p = 0)
+    \draw (3.5,0.1) -- (3.5,-0.1) node[below right] {$\sqrt{\frac{2U}{m\omega^2}}$};
+    \draw (-3.5,0.1) -- (-3.5,-0.1) node[below left] {$-\sqrt{\frac{2U}{m\omega^2}}$};
+    
+    % Limites no eixo p (quando x = 0)
+    \draw (0.1,2.2) -- (-0.1,2.2) node[above left] {$\sqrt{2mU}$};
+    \draw (0.1,-2.2) -- (-0.1,-2.2) node[below left] {$-\sqrt{2mU}$};
+
+\end{tikzpicture}

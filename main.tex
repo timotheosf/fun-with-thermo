@@ -1,0 +1,34 @@
+\documentclass[oneside, a4paper, 12pt]{book}
+\input{preamble/make_preamble}
+
+\begin{document}
+
+\input{preamble/make_titlepage}
+
+\newpage
+\autotocfalse
+\tableofcontents
+\addtocontents{toc}{
+    %\begin{center}
+        \textit{*Seções e capítulos com asterisco podem ser omitidos num curso para graduação.}\protect\par
+    %\end{center}
+}
+\autotoctrue
+
+\part{Termodinâmica Clássica}
+
+\part{Termodinâmica Estatística}
+\input{chapters/ensemble_microcanonico}
+\input{chapters/ensemble_canonico}
+
+
+\appendix
+\input{appendix/formulas_matematicas}
+\input{appendix/notacao_matematica}
+
+\chapter*{Respostas aos exercícios propostos}
+\printsolutions
+
+\nocite{*}
+\input{bibliography/make_bib}
+\end{document}

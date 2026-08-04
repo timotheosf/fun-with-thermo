@@ -1,0 +1,79 @@
+\renewcommand{\arraystretch}{1.6}
+\setlength{\headheight}{14.5pt}
+
+%> 1. Page headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\nouppercase{\leftmark}\hspace{2em}\thepage}
+\fancyhead[L]{}
+\renewcommand{\headrulewidth}{0.4pt} % Linha charmosa separando o header
+
+%> 2. Chapters Appearance
+\titleformat{\chapter}[display]
+    {\normalfont\bfseries}
+    {\filleft\LARGE\chaptertitlename\ \thechapter} % Alinhamento à direita para "Capítulo X"
+    {0.5cm} % Espaço entre o número e a linha
+    {\titlerule\vspace{0.8cm}\filright\Huge} % Título do capítulo alinhado à esquerda
+    [\vspace{2cm}]  
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\bfseries}
+  {\filleft\LARGE\phantom{\chaptertitlename\ 1}} % "Capítulo 1" invisível para dar a altura exata
+  {0.5cm} % Mesmo espaçamento entre o número fantasma e a linha
+  {\titlerule\vspace{0.8cm}\filright\Huge} % Título do capítulo alinhado à esquerda
+  [\vspace{2cm}]
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+
+%> 3. Setting macros for numberless chapters and sections
+\newif\ifautotoc
+\autotoctrue
+\let\chapteroriginal\chapter
+\RenewDocumentCommand{\chapter}{s o m}{%
+  \IfBooleanTF{#1}{%
+    \chapteroriginal*{#3}%
+    \ifautotoc%
+      \phantomsection%
+      \addcontentsline{toc}{chapter}{#3}%
+      \markboth{#3}{#3}%
+    \fi
+  }{%
+    \IfValueTF{#2}{%
+      \chapteroriginal[#2]{#3}%
+    }{%
+      \chapteroriginal{#3}%
+    }%
+  }%
+}
+\let\sectionoriginal\section
+\RenewDocumentCommand{\section}{s o m}{%
+  \IfBooleanTF{#1}{%
+    \sectionoriginal*{#3}%
+      \phantomsection%
+      \addcontentsline{toc}{section}{#3}%
+  }{%
+    \IfValueTF{#2}{%
+      \sectionoriginal[#2]{#3}%
+    }{%
+      \sectionoriginal{#3}%
+    }%
+  }%
+}
+
+%> 4. Starred sections/chapters
+\NewDocumentCommand{\starredchapter}{o m}{%
+  \let\oldthechapter\thechapter
+  \renewcommand{\thechapter}{$\ast\,$\oldthechapter}%
+  \IfValueTF{#1}{\chapter[#1]{#2}}{\chapter{#2}}%
+  \let\thechapter\oldthechapter
+}
+\NewDocumentCommand{\starredsection}{o m}{%
+  \let\oldthesection\thesection
+  \renewcommand{\thesection}{$\ast\,$\oldthesection}%
+  \IfValueTF{#1}{\section[#1]{#2}}{\section{#2}}%
+  \let\thesection\oldthesection
+}
+\NewDocumentCommand{\starredsubsection}{o m}{%
+  \let\oldthesubsection\thesubsection%
+  \renewcommand{\thesubsection}{$\ast\,$\oldthesubsection}% 
+  \IfValueTF{#1}{\subsection[#1]{#2}}{\subsection{#2}}%
+  \let\thesubsection\oldthesubsection 
+}

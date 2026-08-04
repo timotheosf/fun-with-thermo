@@ -1,0 +1,46 @@
+%% --NOTAÇÃO PADRÃO--
+
+%> Alfabetos matemáticos e operadores
+%\DeclareMathAlphabet{\pzcal}{OT1}{pzc}{m}{it} %> Usar \pzcal
+%\DeclareMathAlphabet{\dcal}{U}{dutchcal}{m}{n} %> Usar \dcal
+%\DeclareMathAlphabet{\pzcal}{OMS}{zplm}{m}{n}
+%\DeclareMathOperator{\Tr}{Tr}
+
+\setmathfont[range={scr, bfscr}]{XITS Math}
+\DeclareMathAlphabet{\pzcal}{OMS}{zplm}{m}{n}
+\let\dcal\mathscr
+\newcommand{\upmu}{\symup{\mu}}
+\DeclareMathOperator{\Tr}{Tr}
+
+
+%> Notação para variáveis e grandezas
+%> Diferencial
+\newcommand{\diff}{
+    \mathop{}\!\symup{d}}
+
+%> Grandezas caligráficas por partícula
+% NENHUMA MUDANÇA AQUI! Como preservamos o \dcal no passo anterior, 
+% isso vai continuar funcionando perfeitamente.
+\newcommand{\pp}[1]{ %per particle [X]
+    \dcal{\MakeLowercase{#1}}}
+    
+\newcommand{\pps}{ %per particle entropy
+    \dcal{s}}
+    
+\newcommand{\ppu}{ %per particle energy
+    \dcal{u}}
+
+%> Coordenadas e momentos (Slanted text)
+% Substituímos a chamada de baixo nível (usefont) pela chamada de alto nível do LaTeX.
+% \normalfont garante a fonte principal do texto, e \slshape garante a inclinação "slanted".
+\newcommand{\p}{
+  \text{\normalfont\slshape p}}
+  
+\newcommand{\q}{
+  \text{\normalfont\slshape q}}
+  
+\newcommand{\R}{
+  \text{\normalfont\slshape r}}
+  
+\newcommand{\X}{
+  \text{\normalfont\slshape x}}

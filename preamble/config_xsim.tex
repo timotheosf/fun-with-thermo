@@ -1,0 +1,53 @@
+%% -- TEMPLATES PARA EXERCÍCIOS PROPOSTOS -- %%
+\DeclareExerciseEnvironmentTemplate{question-template}{%
+    \par\vspace{0.5\baselineskip}\noindent
+    \textbf{\GetExerciseProperty{counter}}\quad
+}{%
+    \par\vspace{0.5\baselineskip}
+}
+%% -- TEMPLATES PARA PROBLEMAS PROPOSTOS -- %%
+\DeclareExerciseEnvironmentTemplate{problem-template}{
+    \par\vspace{\baselineskip}\noindent
+    {\large\textbf{\GetExerciseProperty{counter}
+    \IfExercisePropertySetT{subtitle}{ \GetExerciseProperty{subtitle}}}}
+    \par\nopagebreak\vspace{0.3\baselineskip}\noindent
+}{\par\vspace{0.5\baselineskip}}
+
+%> Definição do tipo question
+\DeclareExerciseType{question}{
+    exercise-env      = question,
+    solution-env      = answer,
+    exercise-name     = Exercício,
+    solution-name     = Resposta,
+    exercise-template = question-template,
+    solution-template = question-template
+}
+%> Definição do tipo problem
+\DeclareExerciseType{problem}{
+    exercise-env      = problem,
+    solution-env      = hint,
+    exercise-name     = Problema,
+    solution-name     = Dica,
+    exercise-template = problem-template,
+    solution-template = problem-template
+}
+
+%> Setup do xsim
+\xsimsetup{
+    path = {xsim-arquivos},
+    question/within = chapter,
+    question/the-counter = \thechapter.\arabic{question},
+    problem/within = chapter,
+    problem/the-counter = \thechapter\alph{problem},
+    print-solutions/headings-template = none
+}
+
+%> Ambiente de "parts" para as questões:
+\newlist{partslist}{enumerate}{1}
+\setlist[partslist]{label=\textbf{\alph*.}, leftmargin=*, parsep=0pt}
+\newenvironment{parts}{%
+    \begin{partslist}%
+    \let\part\item 
+}{%
+    \end{partslist}
+}

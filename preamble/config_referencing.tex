@@ -1,0 +1,78 @@
+%> 1. Load bibtex (with biber)
+\usepackage[
+    backend=biber,
+    style=numeric-comp,
+    sorting=none,
+    natbib=true,
+    maxcitenames=1,
+    mincitenames=1,
+    defernumbers=true
+]{biblatex}
+
+%> 2. Load bib sources
+\addbibresource{bibliography/statmech.bib}
+\addbibresource{bibliography/thermo.bib}
+\addbibresource{bibliography/probability.bib}
+
+%> 3. Map bib sources to keywords
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \perdatasource{bibliography/thermo.bib}
+      \step[fieldset=entrysubtype, fieldvalue={thermo}]
+    }
+    \map{
+      \perdatasource{bibliography/statmech.bib}
+      \step[fieldset=entrysubtype, fieldvalue={statmech}]
+    }
+    \map{
+      \perdatasource{bibliography/probability.bib}
+      \step[fieldset=entrysubtype, fieldvalue={probability}]
+    }
+  }
+}
+
+%> 4. Filtering bib by theme and level
+\defbibfilter{IntroTexts}{
+  subtype=thermo and keyword=introductory
+}
+\defbibfilter{Thermo}{
+  subtype=thermo and not keyword=introductory
+}
+\defbibfilter{StatmechBasic}{
+  subtype=statmech and keyword=basic
+}
+\defbibfilter{StatmechAdvanced}{
+  subtype=statmech and keyword=advanced
+}
+\defbibfilter{ProbabilityBasic}{
+  subtype=probability and keyword=basic
+}
+\defbibfilter{ProbabilityAdvanced}{
+  subtype=probability and keyword=advanced
+}
+
+%> 5. Load Load hyperref pkg
+\usepackage{hyperref}
+
+%> 6. Define title and author
+\newcommand*{\doctitle}{Diversão com termoestatística}
+\newcommand*{\docauthor}{Iago Barros and Timóteo Fassoni}
+
+%> 7. Config hypersetup
+\hypersetup{
+    pdftitle={\doctitle},
+    pdfauthor={\docauthor},
+    colorlinks=true,
+    linkcolor=ThemeColor,
+    urlcolor=PrimaryColor,
+    citecolor=PrimaryColor,
+    pdfhighlight=/N
+    }
+
+%> 8. Load cleveref
+\usepackage[brazilian]{cleveref}
+
+%> 9. Config cleveref for "solved" enviroment
+\crefname{solved}{exercício resolvido}{exercícios resolvidos}
+\Crefname{solved}{Exercício Resolvido}{Exercícios Resolvidos}
