@@ -1,0 +1,9 @@
+# Ignore build files
+build/
+
+# Ignore vscode files, such as LTeX+
+.vscode/
+
+# Ignore .pdf (and syncro) files
+*.synctex.gz
+*.pdf
