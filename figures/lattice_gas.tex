@@ -1,49 +1,51 @@
-
 \begin{tikzpicture}[x=\baselineskip, y=\baselineskip]
 
-    \foreach \x in {-3, -1, 1, 3} {
-        \unitsquare{\x, 5}
-        \draw[-{Stealth[scale=0.5]},color=AccentColor] (-1.5,7) -- (\x,5);
-    }
+\newcommand{\removed}[1]{
+        \unitsquare{#1,0}
+        \particle{#1,0}
+        \draw[-{Stealth[scale=0.6]}, color=black, thick]
+        (#1+3.98,0-0.95) to [bend right=-60] node[below] {Removida} (#1+0.95,0-0.95);
+}
+\newcommand{\BraceText}[1]{
+        \draw[decorate,decoration=brace]
+        (5.5,2.5) -- (5.5,-1.5) node[midway, right=1em] {#1};
+}
+
+    \begin{scope} [shift={(0,6)}]
+        \foreach \x in {-3, -1, 1, 3} {
+            \unitsquare{\x,0}
+            \draw[-{Stealth[scale=0.5]},color=AccentColor] (-1.5,2) -- (\x,0);}
+        \foreach \x in {-1.5 , -0.5 , 0.5 , 1.5 } {% At y=7
+           \particle{\x,2}}
+        \BraceText{4 Possibilidades}
+    \end{scope}
     
-    \foreach \x in {-2, 0, 2} {
-        \unitsquare{\x, 1}
-        \draw[-{Stealth[scale=0.5]},color=AccentColor] (-1,3) -- (\x,1);
-    }
+    \begin{scope} [shift={(0,1)}]
+        \foreach \x in {-2, 0, 2} {
+            \unitsquare{\x,0}
+            \draw[-{Stealth[scale=0.5]},color=AccentColor] (-1,2) -- (\x,0);}
+        \foreach \x in {-1 , 0 , 1 } {% at y=3
+            \particle{\x,2}}
+        \removed{-7}
+        \BraceText{3 Possibilidades}
+    \end{scope}
 
-    \foreach \x in {-1, 1} {
-        \unitsquare{\x, -3}
-        \draw[-{Stealth[scale=0.5]},color=AccentColor] (-0.5,-1) -- (\x,-3);
-    }
+    \begin{scope} [shift={(0,-5)}]
+        \foreach \x in {-1, 1} {
+            \unitsquare{\x,0}
+            \draw[-{Stealth[scale=0.5]},color=AccentColor] (-0.5,2) -- (\x,0);}]
+        \foreach \x in {-0.5 , 0.5 } {% at y=-1
+            \particle{\x,2}}
+        \removed{-6}
+        \BraceText{2 Possibilidades}
+    \end{scope}
 
-    \foreach \x in {0} {
-        \unitsquare{\x, -7}
-    }
-
-    \def\removedPos{
-        -7/1 , -6/-3 , -5/-7
-    }
-
-    \foreach \x in {-1.5 , -0.5 , 0.5 , 1.5 } {% At y=7
-        \particle{\x,7}
-    }
-    
-    \foreach \x in {-1 , 0 , 1 } {% at y=3
-        \particle{\x,3}
-    }
-    \foreach \x in {-0.5 , 0.5 } {% at y=-1
-        \particle{\x,-1}
-    }
-    \foreach \x in {0 } {% at y=-5
-        \particle{\x,-5}
-    }
-
-    \foreach \x/\y in \removedPos{
-        \unitsquare{\x,\y}
-        \particle{\x,\y}
-        \draw[-{Stealth[scale=0.6]}, color=blue, thick] 
-        (\x+3.98,\y-0.95) to [bend right=-60] node[below, font=\scriptsize] {Removida} (\x+0.95,\y-0.95);
-    }
-    
-    
+    \begin{scope} [shift={(0,-11)}]
+        \foreach \x in {0} {
+            \unitsquare{\x,0}}
+        \foreach \x in {0} {% at y=-5
+            \particle{\x,2}}
+        \removed{-5}
+        \BraceText{1 Possibilidade}
+    \end{scope}
 \end{tikzpicture}
