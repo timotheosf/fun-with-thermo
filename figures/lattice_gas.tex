@@ -1,0 +1,49 @@
+
+\begin{tikzpicture}[x=\baselineskip, y=\baselineskip]
+
+    \foreach \x in {-3, -1, 1, 3} {
+        \unitsquare{\x, 5}
+        \draw[-{Stealth[scale=0.5]},color=AccentColor] (-1.5,7) -- (\x,5);
+    }
+    
+    \foreach \x in {-2, 0, 2} {
+        \unitsquare{\x, 1}
+        \draw[-{Stealth[scale=0.5]},color=AccentColor] (-1,3) -- (\x,1);
+    }
+
+    \foreach \x in {-1, 1} {
+        \unitsquare{\x, -3}
+        \draw[-{Stealth[scale=0.5]},color=AccentColor] (-0.5,-1) -- (\x,-3);
+    }
+
+    \foreach \x in {0} {
+        \unitsquare{\x, -7}
+    }
+
+    \def\removedPos{
+        -7/1 , -6/-3 , -5/-7
+    }
+
+    \foreach \x in {-1.5 , -0.5 , 0.5 , 1.5 } {% At y=7
+        \particle{\x,7}
+    }
+    
+    \foreach \x in {-1 , 0 , 1 } {% at y=3
+        \particle{\x,3}
+    }
+    \foreach \x in {-0.5 , 0.5 } {% at y=-1
+        \particle{\x,-1}
+    }
+    \foreach \x in {0 } {% at y=-5
+        \particle{\x,-5}
+    }
+
+    \foreach \x/\y in \removedPos{
+        \unitsquare{\x,\y}
+        \particle{\x,\y}
+        \draw[-{Stealth[scale=0.6]}, color=blue, thick] 
+        (\x+3.98,\y-0.95) to [bend right=-60] node[below, font=\scriptsize] {Removida} (\x+0.95,\y-0.95);
+    }
+    
+    
+\end{tikzpicture}
