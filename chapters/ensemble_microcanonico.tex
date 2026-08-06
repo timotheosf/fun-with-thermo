@@ -75,6 +75,12 @@
         \noindent\textbf{Resolução:}\\
         \indent O problema consiste em distribuir as $N$ partículas nas $V$ células do sistema. Para isso, a primeira pode `escolher' dentre um total de $V$ células; a segunda, $V-1$ (exclui-se a célula ocupada pela primeira); e assim por diante. Em outras palavras, são
         \[ V\times(V-1)\times(V-2)\times\cdots\times(V-N+1) = \frac{V!}{(V-N)!}\]
+
+        \begin{center}
+            \input{figures/lattice_gas}
+        \end{center}
+
+
         maneiras de ocupar as células. Como as partículas são indistinguíveis, para obtermos a multiplicidade correta basta dividir o nosso resultado por $N!$:
         \begin{equation}\label{eq:multiplicidade_gas_de_rede}
             \Omega(N,V) = \frac{V!}{(V-N)!N!}\,.
