@@ -30,7 +30,6 @@
         baseBox,
         description font=\itshape,
         separator sign={~--~},
-        segmentation style={draw=PrimaryColor, dashed, line width=1pt},
         attach boxed title to top left={
             yshift=-\tcboxedtitleheight/2,
             xshift=1em
@@ -45,6 +44,7 @@
     colframe=SecondaryBackground,
     coltitle=black,
     borderline west={1.5pt}{0pt}{PrimaryColor},
+    segmentation style={draw=PrimaryColor, dashed, line width=1pt},
     boxed title style={
         colback=AccentBackground
     },
@@ -63,6 +63,23 @@
             (frame.south west) rectangle ([yshift=1pt]frame.south east);
     }
 }{solved}
+
+\newtcbtheorem[number within=chapter]{example}{Exemplo}{
+    theoremBox,
+    colback=white,
+    colframe=black,
+    coltitle=black,
+    segmentation style={draw=white, dashed, line width=1pt},
+    attach boxed title to top left={
+            yshift=-\tcboxedtitleheight/2
+    },
+    boxed title style={
+        colback=white,
+        colframe=black,
+        boxrule=1pt
+    },
+    after lower={\hfill\blacksquare}
+}{example}
 
 \newtcolorbox{questionsbox}[1][]{
     colorBox,
