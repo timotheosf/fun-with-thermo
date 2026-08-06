@@ -1,13 +1,13 @@
 \newcommand{\unitsquare}[1]{
     % O shift move o (0,0) para a coordenada #1.
     % O thick deixa a linha um pouco mais grossa, padrão de figuras profissionais.
-    \draw[color=PrimaryColor, fill=SecondaryColor, thick, shift={(#1)}] 
+    \draw[color=DarkBlue, fill=AccentBlue, thick, shift={(#1)}] 
         (-0.95, -0.95) rectangle (0.95, 0.95);
 }
 
 \newcommand{\particle}[1]{
     % O shift move o (0,0) para a coordenada #1.
     % O thick deixa a linha um pouco mais grossa, padrão de figuras profissionais.
-    \draw[color=ThemeColor!60!black, fill=ThemeColor!60!black, shift={(#1)}] 
-        (0,0) circle (0.125);
+    \draw[color=DarkBlue!60!black, fill=DarkBlue!60!black, shift={(#1)}] 
+        (0,0) circle (0.2);
 }
