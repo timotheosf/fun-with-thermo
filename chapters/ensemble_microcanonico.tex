@@ -30,7 +30,7 @@
     
     Sistemas com espectro contínuo de energia representam uma dificuldade maior e são tratados somente na \cref{sec:espec_continuo_de_energia}. Vamos começar com um exemplo simples e seguir incrementando.
 
-    \begin{solved}{Multiplicidade de três partículas de spin 1/2}{multiplicidade_paramagneto_tres_particulas}
+    \begin{example}{Multiplicidade de três partículas de spin 1/2}{multiplicidade_paramagneto_tres_particulas}
         Considere o sistema do paramagnetno de dois estados com energia total fixa $U=-\upmu_m\mathrm{H}$ e formado por $N=3$ spins. Encontre a multiplicidade deste sistema.
         \tcblower
         \noindent\textbf{Resolução:}\\
@@ -45,7 +45,7 @@
         Podemos pensar que, inicialmente, todos os três estão no estado $\downarrow$, então escolhemos um spin para colocá-lo no estado $\uparrow$, e depois repetimos com um segundo. Para o primeiro spin, temos 3 opções de escolha, e, para o segundo, temos 2 opções, totalizando $3\cdot2$; contudo, precisamos descontar as permutações possíveis dessa escolha, uma vez que não podemos diferenciar os spins. Concluímos que a multiplicidade é \[\Omega = \frac{\overbrace{3\cdot2}^{\text{Número de escolhas possíveis}}}{\underbrace{2}_{\text{Número de permutações da escolha}}}=3.\]
 
         Podemos reescrever $\Omega$ numa forma mais interessante. Considerando $N_{\uparrow}=2$ o número de spins no estado $\uparrow$ e $N_{\downarrow}$ o número de spins no estado $\downarrow$, temos: \[\Omega = \frac{3\cdot2}{2}=\frac{3\cdot2\cdot1}{(2\cdot1)\cdot1}=\frac{3!}{2!1!}=\frac{N!}{N_{\uparrow}!N_{\downarrow}!}.\]
-    \end{solved}
+    \end{example}
 
     \begin{solved}{Multiplicidade do Paramagneto de dois estados}{multiplicidade_paramagneto_dois_estados}
     Considere o sistema do paramagnetno de dois estados com energia total fixa $U$ e formado por $N$ spins. Encontre a multiplicidade deste sistema.
@@ -53,7 +53,7 @@
     \noindent\textbf{Resolução:}\\
     \indent Vamos considerar que o número de spins paralelos ao campo é $N_{\uparrow}$, enquanto o número de spins antiparalelos é $N_{\downarrow}$. Claramente, nós temos \[N=N_{\downarrow}+N_{\uparrow},\] bem como \[U=\upmu_m\mathrm{H}\big(N_{\downarrow}-N_{\uparrow}\big).\] Assim, podemos entender o problema como contar todas as formas de colocarmos $N_{\downarrow}$ dos $N$ spins na posição $\downarrow$, e $N_{\uparrow}$ na posição $\uparrow$.
         
-    Para colocar o primeiro spin na posição $\uparrow$, podemos escolher qualquer um dentre as $N$ opções de spin; para o segundo, são $N-1$ opções, e assim por diante, de modo que escolhemos um total de \[\frac{N!}{(N-N_{\uparrow})!}=\frac{N!}{N_{\downarrow}!}\] spins na posição $\uparrow$ (cf. o Ex. Resolvido \ref{solved:multiplicidade_paramagneto_tres_particulas}).
+    Para colocar o primeiro spin na posição $\uparrow$, podemos escolher qualquer um dentre as $N$ opções de spin; para o segundo, são $N-1$ opções, e assim por diante, de modo que escolhemos um total de \[\frac{N!}{(N-N_{\uparrow})!}=\frac{N!}{N_{\downarrow}!}\] spins na posição $\uparrow$ (cf. \ref{example:multiplicidade_paramagneto_tres_particulas}).
     
     Mas temos que descontar deste número todas as permutações possíveis entre os $N_{\uparrow}$ spins escolhidos, porque não conseguimos distinguir um do outro, e chegamos à nossa multiplicidade: \[\Omega(N_{\uparrow},N)=\frac{N!}{N_{\downarrow}!N_{\uparrow}!}\equiv\binom{N}{N_{\uparrow}}.\]
     Lembrando que $U=\upmu_m\mathrm{H}\big(N_{\downarrow}-N_{\uparrow}\big)$ e $N=N_{\downarrow}+N_{\uparrow}$, podemos escrever $\Omega$ em termos da energia $U$:
