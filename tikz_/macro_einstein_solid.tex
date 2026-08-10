@@ -38,9 +38,7 @@
 }
 
 \newcommand{\EinsteinSolidMultiplicity}{
-\begin{tikzpicture}[x=\baselineskip, y=\baselineskip, 
-        trim left=-8\baselineskip, 
-        trim right=8\baselineskip ]
+\begin{tikzpicture}[x=\baselineskip, y=\baselineskip]
 \def\L{3}
 \def\DeltaL{3.05}
 \def\N{6}       % Quantidade de bolinhas na base da pirâmide
@@ -108,6 +106,8 @@
 
 \draw [-{Triangle[length=0.5em, width=0.4em]}, very thick, color=black]
     (+0.8,0.5*\MidY) to [bend right=40] node[below=1em, align=center] {Fixamos o oscilador em um\\ retículo vago da rede}(\MaxXPos-3,0.5*\MidY);
+
+\path (-16, 0) (16, 0);
 
 \end{tikzpicture}
 }
