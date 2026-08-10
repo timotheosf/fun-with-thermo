@@ -64,7 +64,16 @@
         Considere o sólido de Einstein com energia total fixa $U$ e formado por $N$ spins. Encontre a multiplicidade deste sistema.
         \tcblower
         \noindent\textbf{Resolução:}\\
+
+        \begin{center}
+            \EinsteinSolid[5][5][0.8]
+        \end{center}
+
         \indent Cada oscilador $j$ tem energia $E_j=n_j\varepsilon$, com $n_j$ natural. A energia total é, então, \[U=E_1+E_2+\cdots+E_N=n_1\varepsilon+n_2\varepsilon+\cdots+n_N\varepsilon=M\varepsilon,\] onde $M$ representa o múltiplo total de energia $\varepsilon$ que devemos distribuir nos $N$ osciladores.
+
+        \begin{center}
+            \EinsteinSolidMultiplicity
+        \end{center}
 
         Para o primeiro oscilador, temos um total de $M$ múltiplos de energia; para o segundo, $M-n_1$, e assim por diante, de modo que temos $M!$ formas de distribuir a energia. Mas como também temos que fixar as posições dos osciladores no espaço, nosso problema se torna a distribuição de $M+N-1$ elementos: $M$ múltiplos de energia e $N-1$ osciladores no espaço, em que o $-1$ aparece porque localização do último oscilador é determinada pela colocação dos $N-1$ anteriores (ele fica no lugar ``que sobra'').
 
