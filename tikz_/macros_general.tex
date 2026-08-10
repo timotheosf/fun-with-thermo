@@ -3,11 +3,11 @@
 \def\L{3}
 \def\DeltaL{3.05}
 
-\NewDocumentCommand{\DrawParticle}{ O{DarkBlue!60!black} m O{0.2} O{} }{
+\NewDocumentCommand{\DrawParticle}{ O{DarkBlue!60!black} m O{0.4\baselineskip} O{} }{
     % Sintax:
     %  \DrawParticle[color]{position}[size][name]
     %
-    \node[circle, fill=#1, inner sep=0pt, minimum size=#3]
+    \node[circle, color=#1, fill=#1, inner sep=0pt, minimum size=#3]
         (#4) at (#2) {};
 }
 
