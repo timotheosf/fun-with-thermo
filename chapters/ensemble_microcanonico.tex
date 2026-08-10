@@ -10,7 +10,7 @@
         onde $k_B$ é a constante de Boltzmann, cujo valor exato é $k_B=1,380 649\cdot10^{-23}J/K$.
     \end{statementbox}
 
-     Neste capítulo, vamos resolver três problemas clássicos com a teoria do Ensemble Microcanônico, a saber: o Paramagneto de dois estados, o Sólido de Einstein, e o Gás Ideal Monoatômico.
+    Neste capítulo, vamos aplicar a teoria do Ensemble Microcanônico para resolver três problemas clássicos, a saber: o Paramagneto de dois estados, o Sólido de Einstein, e o Gás Ideal Monoatômico. Eles serão revisitados nos próximos capítulos, quando falarmos dos ensembles canônico e grandecanônico. Eles estão introduzidos nos exemplos 
 
      \begin{statementbox}{Paramagneto de dois estados}
         O \textbf{Paramagneto de dois estados} consiste em $N$ spins 1/2 que não interagem entre si e sujeitos a um campo magnético uniforme $\mathrm{H}$ aplicado numa dada direção. Cada spin pode ter alinhamento paralelo ao campo, com energia $-\upmu_m\mathrm{H}$, ou antiparalelo ao campo, com energia $+\upmu_m\mathrm{H}$, onde $\upmu_m$ é o momento de dipolo magnético de um spin.
@@ -26,59 +26,73 @@
 
 \section{Encontrando a multiplicidade}
 
-    A principal tarefa no ensemble microcanônico é determinar a multiplicidade $\Omega$ do macrosestado correspondente. Caso o sistema tenha níveis discretos de energia, esta tarefa se resume a responder à pergunta \textit{de quantas formas possíveis podemos distribuir a energia $U$ entre as $N$ partículas?} Em outras palavras, é uma tarefa de análise combinatória.
-    
-    Sistemas com espectro contínuo de energia representam uma dificuldade maior e são tratados somente na \cref{sec:espec_continuo_de_energia}. Vamos começar com um exemplo simples e seguir incrementando.
+    A principal tarefa no ensemble microcanônico é determinar a multiplicidade $\Omega$ do macrosestado correspondente. Caso o sistema tenha níveis discretos de energia, esta tarefa se resume a responder à pergunta \textit{de quantas formas possíveis podemos distribuir a energia $U$ entre as $N$ partículas?} Em outras palavras, é uma tarefa de análise combinatória. Sistemas com espectro contínuo de energia representam uma dificuldade maior e são tratados somente na \cref{sec:espec_continuo_de_energia}.
 
-    \begin{example}{Multiplicidade de três partículas de spin 1/2}{multiplicidade_paramagneto_tres_particulas}
-        Considere o sistema do paramagnetno de dois estados com energia total fixa $U=-\upmu_m\mathrm{H}$ e formado por $N=3$ spins. Encontre a multiplicidade deste sistema.
+    \begin{example}{Multiplicidade do paramagnetno de dois estados}{micro:multiplicidade_paramagnetno_dois_estados}
+        
+        Considere o sistema do paramagnetno de dois estados com energia total fixa $U=-\upmu_m\mathrm{H}$ e formado por $N$ spins. Encontre a multiplicidade deste sistema.
         \tcblower
         \noindent\textbf{Resolução:}\\
-        \indent Lembrando que cada spin pode estar em dois estados: `para cima' (paralelo ao campo), $\uparrow$, com energia $\varepsilon_{\uparrow}=-\upmu_m\mathrm{H}$, ou `para baixo' (antiparalelo ao campo), $\downarrow$, com energia $\varepsilon_{\downarrow}=\upmu_m\mathrm{H}$.
+        \indent Cada spin pode estar em um de dois estados possíveis: `para cima' (paralelo ao campo), $\uparrow$, com energia $\varepsilon_{\uparrow}=-\upmu_m\mathrm{H}$, ou `para baixo' (antiparalelo ao campo), $\downarrow$, com energia $\varepsilon_{\downarrow}=\upmu_m\mathrm{H}$.
+
+        Vamos pensar, primeiramente, num sistema composto apenas por 3 spins. Assim temos, ao todo, quatro configurações possíveis para o sistema: todos spins alinhados ao campo; todos spins anti-paralelo ao campo; dois spins alinhados e apenas um spin alinhado, como mostra a \cref{fig:paramagnetic_salt}.
 
         \begin{center}
             \ParamagneticSalt
+            \captionof{figure}{Paramagneto de dois estados. \label{fig:paramagnetic_salt}}
         \end{center}
 
-        Como a energia total é $-\upmu_m\mathrm{H}$, sabemos devemos ter dois spins $\uparrow$ e um spin $\downarrow$, de modo que \[2\varepsilon_{\uparrow}+1\varepsilon_{\downarrow}=-2\upmu_m\mathrm{H}+\upmu_m\mathrm{H}=-\upmu_m\mathrm{H}.\] Resta determinar \textit{de quantas formas} podemos ter dois spins $\uparrow$ e um $\downarrow$. 
+        Se a energia total do sistema for $E=-\upmu_m\mathrm{H}$, devemos ter dois spins $\uparrow$ e um spin $\downarrow$, de modo que \[2\varepsilon_{\uparrow}+1\varepsilon_{\downarrow}=-2\upmu_m\mathrm{H}+\upmu_m\mathrm{H}=-\upmu_m\mathrm{H}.\] Resta determinar \textit{de quantas formas} podemos ter dois spins $\uparrow$ e um $\downarrow$. 
         
         Podemos pensar que, inicialmente, todos os três estão no estado $\downarrow$, então escolhemos um spin para colocá-lo no estado $\uparrow$, e depois repetimos com um segundo. Para o primeiro spin, temos 3 opções de escolha, e, para o segundo, temos 2 opções, totalizando $3\cdot2$; contudo, precisamos descontar as permutações possíveis dessa escolha, uma vez que não podemos diferenciar os spins. Concluímos que a multiplicidade é \[\Omega = \frac{\overbrace{3\cdot2}^{\text{Número de escolhas possíveis}}}{\underbrace{2}_{\text{Número de permutações da escolha}}}=3.\]
 
         Podemos reescrever $\Omega$ numa forma mais interessante. Considerando $N_{\uparrow}=2$ o número de spins no estado $\uparrow$ e $N_{\downarrow}$ o número de spins no estado $\downarrow$, temos: \[\Omega = \frac{3\cdot2}{2}=\frac{3\cdot2\cdot1}{(2\cdot1)\cdot1}=\frac{3!}{2!1!}=\frac{N!}{N_{\uparrow}!N_{\downarrow}!}.\]
+
+        Esta generalização é facilmente obtida considerando que o número total de spins do sistema, $N$, pode ser escrito por:
+        \[N = N_{\uparrow}+N_{\downarrow}\,,\]
+        enquanto a energia pode ser escrita por:
+        \[U=\upmu_m\mathrm{H}\big(N_{\downarrow}-N_{\uparrow}\big)\,.\]
+        Assim, é o problema de contar todas as formas de colocarmos $N_{\downarrow}$ spins no estado $\downarrow$ e $N_{\uparrow}$, no estado $\uparrow$.
+
+        Podemos começar supondo que todos spins estão na posição $\downarrow$ e repetimos o argumento anterior. Com efeito, para o primeiro spin que vamos trocar o estado, $\downarrow\to\uparrow$, podemos escolher qualquer um dos $N$; para o segundo, como já escolhemos um, temos $N-1$ escolhas, e assim por diante, totalizando
+        \[N\cdot(N-1)\cdot\cdots(N-N_{\uparrow}+1) = \frac{N!}{N_{\uparrow}!}\] formas diferentes de escolher $N_{\uparrow}$ spins para cima.
+        
+        Como podemos permutar todos os $N_{\downarrow}$ spins que continuaram no estado $\downarrow$, a multiplicidade resultante é 
+        \[\Omega = \frac{N!}{N_{\downarrow}!N_{\uparrow}!}\equiv\binom{N}{N_{\uparrow}}\,,\] que, escrevendo em termos da energia $U$ e do número $N$, encontramos:
+        \[\Omega(U,N)=\frac{N!}{\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!}.\]
     \end{example}
 
-    \begin{solved}{Multiplicidade do Paramagneto de dois estados}{multiplicidade_paramagneto_dois_estados}
-    Considere o sistema do paramagnetno de dois estados com energia total fixa $U$ e formado por $N$ spins. Encontre a multiplicidade deste sistema.
-    \tcblower
-    \noindent\textbf{Resolução:}\\
-    \indent Vamos considerar que o número de spins paralelos ao campo é $N_{\uparrow}$, enquanto o número de spins antiparalelos é $N_{\downarrow}$. Claramente, nós temos \[N=N_{\downarrow}+N_{\uparrow},\] bem como \[U=\upmu_m\mathrm{H}\big(N_{\downarrow}-N_{\uparrow}\big).\] Assim, podemos entender o problema como contar todas as formas de colocarmos $N_{\downarrow}$ dos $N$ spins na posição $\downarrow$, e $N_{\uparrow}$ na posição $\uparrow$.
-        
-    Para colocar o primeiro spin na posição $\uparrow$, podemos escolher qualquer um dentre as $N$ opções de spin; para o segundo, são $N-1$ opções, e assim por diante, de modo que escolhemos um total de \[\frac{N!}{(N-N_{\uparrow})!}=\frac{N!}{N_{\downarrow}!}\] spins na posição $\uparrow$ (cf. \ref{example:multiplicidade_paramagneto_tres_particulas}).
-    
-    Mas temos que descontar deste número todas as permutações possíveis entre os $N_{\uparrow}$ spins escolhidos, porque não conseguimos distinguir um do outro, e chegamos à nossa multiplicidade: \[\Omega(N_{\uparrow},N)=\frac{N!}{N_{\downarrow}!N_{\uparrow}!}\equiv\binom{N}{N_{\uparrow}}.\]
-    Lembrando que $U=\upmu_m\mathrm{H}\big(N_{\downarrow}-N_{\uparrow}\big)$ e $N=N_{\downarrow}+N_{\uparrow}$, podemos escrever $\Omega$ em termos da energia $U$:
-        \[\Omega(U,N)=\frac{N!}{\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!}.\]
-    \end{solved}
-
-    \begin{solved}{Multiplicidade do sólido de Einstein}{}
+    \begin{example}{Multiplicidade do sólido de Einstein}{}
         Considere o sólido de Einstein com energia total fixa $U$ e formado por $N$ spins. Encontre a multiplicidade deste sistema.
         \tcblower
         \noindent\textbf{Resolução:}\\
-
+        \indent A \cref{fig:EinsteinSolid} mostra uma imagem pictórica do modelo de Einstein: são $N$ osciladores, todos independentes um do outro, mas localizados em posições fixas no espaço. Cada oscilador $j$ tem energia $E_j=n_j\varepsilon$, com $n_j$ natural.
+        
         \begin{center}
             \EinsteinSolid[5][5][0.8]
+            \captionof{figure}{Sólido de Einstein: `caixas' contendo osciladores independentes um do outro -- isto é, a energia de um não interfere na do outro.\label{fig:EinsteinSolid}}
         \end{center}
 
-        \indent Cada oscilador $j$ tem energia $E_j=n_j\varepsilon$, com $n_j$ natural. A energia total é, então, \[U=E_1+E_2+\cdots+E_N=n_1\varepsilon+n_2\varepsilon+\cdots+n_N\varepsilon=M\varepsilon,\] onde $M$ representa o múltiplo total de energia $\varepsilon$ que devemos distribuir nos $N$ osciladores.
+        Assim, a energia total do sistema é dada por \[U=E_1+E_2+\cdots+E_N=n_1\varepsilon+n_2\varepsilon+\cdots+n_N\varepsilon=M\varepsilon\,,\] onde $M$ representa o múltiplo total de energia $\varepsilon$ que podemos distribuir dentre os $N$ osciladores.
+
+        Para descobrirmos a multiplicidade, vamos recorrer à estratégia de tentar `montar' um sistema a partir \textit{ex nihilo}. Empilhamos nossos $M$ múltiplos de energia e enfileiramos os $N$ osciladores (que ocuparão exatamente $N$ lugares na rede do sólido). Fazemos o seguinte processo:
+        \begin{enumerate}
+            \item Escolhemos a quantidade $n_j$ de energia;
+            \item Dotamos o $j$-ésimo oscilador com ela;
+            \item Fixamos este oscilador num dos $N-j$ sítios livres da rede (o sólido).
+        \end{enumerate}
+        A \cref{fig:EinsteinSolidMultiplicity} mostra com é este processo.
 
         \begin{center}
             \EinsteinSolidMultiplicity
+            \captionof{figure}{Processo de construção do sólido de Einstein.
+            \label{fig:EinsteinSolidMultiplicity}}
         \end{center}
 
-        Para o primeiro oscilador, temos um total de $M$ múltiplos de energia; para o segundo, $M-n_1$, e assim por diante, de modo que temos $M!$ formas de distribuir a energia. Mas como também temos que fixar as posições dos osciladores no espaço, nosso problema se torna a distribuição de $M+N-1$ elementos: $M$ múltiplos de energia e $N-1$ osciladores no espaço, em que o $-1$ aparece porque localização do último oscilador é determinada pela colocação dos $N-1$ anteriores (ele fica no lugar ``que sobra'').
+        Para o primeiro oscilador, temos um total de $M$ múltiplos de energia; para o segundo, $M-n_1$, e assim por diante, de modo que temos um total de $M!$ permutações (formas) de distribuir a energia entre os osciladores. Ao mesmo tempo, para o primeiro oscilador temos $N$ retículos disponíveis para escolher, $N-1$ para o segundo e assim por diante, de modo que, para $N-1$-ésimo oscilador, temos exatamente um único sítio: são $(N-1)!$ configurações diferentes, porque o último sempre fica no lugar `que sobra'.
 
-        Levando em conta que tanto os quanta de energia quanto os osciladores são indistinguíveis, concluímos que \[\Omega(U,N)=\frac{(M+N-1)!}{M!(N-1)!},\] que podemos escrever em termos da energia $U=M\varepsilon$: \[\Omega(U,N)=\frac{\left(\frac{U}{\varepsilon}+N-1\right)!}{\left(\frac{U}{\varepsilon}\right)!(N-1)!}.\]
-    \end{solved}
+        Em outras palavras, é o problema de distribuir um total de $M+N-1$ elementos: $M$ múltiplos de energia e $N-1$ osciladores no espaço. Levando em conta as permutações possíveis (tanto os quanta de energia quanto os osciladores são indistinguíveis), concluímos que \[\Omega(U,N)=\frac{(M+N-1)!}{M!(N-1)!},\] que podemos escrever em termos da energia $U=M\varepsilon$: \[\Omega(U,N)=\frac{\left(\frac{U}{\varepsilon}+N-1\right)!}{\left(\frac{U}{\varepsilon}\right)!(N-1)!}.\]
+    \end{example}
 
     Para tratar o gás ideal, precisamos tomar alguns cuidados. Como o espectro de energia não é discreto, não podemos mais ``contar estados''; por isso, deixamos o tema para a \cref{sec:espec_continuo_de_energia}. Contudo, no exercício abaixo abordamos o problema clássico do gás de rede.
 
@@ -135,7 +149,16 @@
 
 \section{Termodinâmica em ação}
 
-    A partir da multiplicidade, podemos extrair todas as propriedades termodinâmicas do sistema com a entropia de Boltzmann. A Figura \ref{fig:maquina_da_mecanica_estatistica} ilustra o processo: basta \textit{girar a manivela} da mecânica estatística; isto é, transformamos as grandezas estatísticas em potenciais da termodinâmica clássica.
+    A partir da multiplicidade, podemos extrair todas as propriedades termodinâmicas do sistema com a entropia de Boltzmann. A Figura \ref{fig:maquina_da_mecanica_estatistica} ilustra o processo: basta \textit{girar a manivela} da mecânica estatística; isto é, fazemos corresponder as grandezas estatísticas aos potenciais da termodinâmica clássica.
+
+    Para este procedimento, uma ferramenta que constantemente usaremos é a aproximação de Stirling (cf \cref{eq_appx:approximacao_de_stirling}):
+    \begin{equation}
+        \ln N! \approx N\ln N-N\,,
+    \end{equation}
+    que dará potenciais devidamente extensíveis. Para utilizá-la, tomaremos o limite termodinâmico do número de partículas\footnote{Poderíamos usar, no lugar de $N$, o volume do sistema, que é mais natural.}, mantendo fixas as razões $\pp{v}=V/N$ e $\ppu=U/N$:
+    \begin{equation}
+        \lim_{N\to\infty} \frac{S}{N} = \lim_{N\to\infty} \frac{1}{N}k_B\ln(\Omega)\,.
+    \end{equation}
 
     \begin{figure}[htb]
         \centering
@@ -145,7 +168,7 @@
     \end{figure}
 
     \begin{solved}{Entropia do paramagneto de dois estados}{}
-        A partir da multiplicidade do paramagneto de dois estados, \[\Omega(U,N)=\frac{N!}{\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!},\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
+        A partir da multiplicidade do paramagneto de dois estados, \[\Omega(U,N)=\frac{N!}{\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!}\,,\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
         \tcblower
         \noindent\textbf{Resolução:}\\
         \indent Temos \[S(U,N)=k_B\ln(\Omega)=k_B\left[\ln(N!)+\ln\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!+\ln\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!\right].\] No limite termodinâmico, podemos usar a fórmula de Stirling (cf. \cref{eq_appx:approximacao_de_stirling}), com $\ppu=U/N$ fixo:
