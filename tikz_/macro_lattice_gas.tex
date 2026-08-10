@@ -1,10 +1,10 @@
 \newcommand{\removed}[1]{
-        \unitsquare{#1,0}
-        \particle{#1,0}
+        \DrawSquare[PrimaryColor][SecondaryColor]{#1,0}
+        \DrawParticle{#1,0}
         \draw[-{Stealth[scale=0.6]}, color=black, thick]
         (#1+3.98,0-0.95) to [bend right=-60] node[below] {Removida} (#1+0.95,0-0.95);
 }
-\newcommand{\comment}[1]{
+\newcommand{\lgComment}[1]{
         \draw[decorate,decoration=brace]
         (5.5,2.5) -- (5.5,-1.5) node[midway, right=1em] {#1};
 }
@@ -14,40 +14,40 @@
 
     \begin{scope} [shift={(0,6)}]
         \foreach \x in {-3, -1, 1, 3} {
-            \unitsquare{\x,0}
+            \DrawSquare[PrimaryColor][SecondaryColor]{\x,0}
             \draw[-{Stealth[scale=0.5]},color=AccentColor] (-1.5,2) -- (\x,0);}
         \foreach \x in {-1.5 , -0.5 , 0.5 , 1.5 } {% At y=7
-           \particle{\x,2}}
-        \comment{4 Possibilidades}
+           \DrawParticle{\x,2}}
+        \lgComment{4 Possibilidades}
     \end{scope}
     
     \begin{scope} [shift={(0,1)}]
         \foreach \x in {-2, 0, 2} {
-            \unitsquare{\x,0}
+            \DrawSquare[PrimaryColor][SecondaryColor]{\x,0}
             \draw[-{Stealth[scale=0.5]},color=AccentColor] (-1,2) -- (\x,0);}
         \foreach \x in {-1 , 0 , 1 } {% at y=3
-            \particle{\x,2}}
+            \DrawParticle{\x,2}}
         \removed{-7}
-        \comment{3 Possibilidades}
+        \lgComment{3 Possibilidades}
     \end{scope}
 
     \begin{scope} [shift={(0,-5)}]
         \foreach \x in {-1, 1} {
-            \unitsquare{\x,0}
-            \draw[-{Stealth[scale=0.5]},color=AccentColor] (-0.5,2) -- (\x,0);}]
+            \DrawSquare[PrimaryColor][SecondaryColor]{\x,0}
+            \draw[-{Stealth[scale=0.5]},color=AccentColor] (-0.5,2) -- (\x,0);}
         \foreach \x in {-0.5 , 0.5 } {% at y=-1
-            \particle{\x,2}}
+            \DrawParticle{\x,2}}
         \removed{-6}
-        \comment{2 Possibilidades}
+        \lgComment{2 Possibilidades}
     \end{scope}
 
     \begin{scope} [shift={(0,-11)}]
         \foreach \x in {0} {
-            \unitsquare{\x,0}}
+            \DrawSquare[PrimaryColor][SecondaryColor]{\x,0}}
         \foreach \x in {0} {% at y=-5
-            \particle{\x,2}}
+            \DrawParticle{\x,2}}
         \removed{-5}
-        \comment{1 Possibilidade}
+        \lgComment{1 Possibilidade}
     \end{scope}
 \end{tikzpicture}
 }
