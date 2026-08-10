@@ -9,9 +9,9 @@
 \foreach \i in {1,...,\Ly}{
     \begin{scope} [shift={(\i*\DeltaL,\j*\DeltaL)}]
         \pgfmathsetmacro{\DeltaX}{\Temp*rand}
-        \Lattice{0,0}{\L}
+        \DrawLatticeCell{0,0}{\L}
         \draw[spring, segment length=(1+\DeltaX)*2.0] (-\L/2+0.03,0) -- (-0.2+\DeltaX\L,0);
-        \particle{\DeltaX\L,0}
+        \DrawParticle{\DeltaX\L,0}
     \end{scope}
 }}
 
@@ -23,12 +23,21 @@
 
 \NewDocumentCommand{\EinsteinSolid}{ O{5} O{5} O{0.4} }{
     \begin{tikzpicture}[x=\baselineskip, y=\baselineskip]
-        \DrawEinsteinSolid[#1][#1][#3]
+        \DrawEinsteinSolid[#1][#2][#3]
     \end{tikzpicture}
 }
 
-\EinsteinSolid[5][5][0.8]
+\newcommand{\OscilatorInAir}{
+    \fill[pattern=north east lines] (-1,-1.25) rectangle (-1.25,1.25);
+    \draw[line width=0.4] (-1,-1.25) -- (-1,1.25);
+    \begin{scope}[shift={(-1,0)}]
+        \pgfmathsetmacro{\DeltaX}{0.8*rand}
+        \draw[spring, segment length=(1+\DeltaX)*2.0] (0,0) -- (\L/2-0.2+\DeltaX\L-0.03,0);
+        \DrawParticle{\DeltaX\L-0.03+\L/2,0}
+    \end{scope}
+}
 
+\newcommand{\EinsteinSolidMultiplicity}{
 \begin{tikzpicture}[x=\baselineskip, y=\baselineskip]
 \def\N{6}       % Quantidade de bolinhas na base da pirâmide
 \def\dist{1.05} % Distância D entre os centros das bolinhas 
@@ -40,37 +49,23 @@
 \def\MaxXPos{+7.5}
 \def\MinX{\MinXPos-\N*\Radius}
 
-\newcommand{\DrawOscilator}{
-    \pgfmathsetmacro{\DeltaX}{0.8*rand}
-    %\Lattice{0,0}{\L}
-    \draw[spring, segment length=(1+\DeltaX)*2.0] (0,0) -- (\L/2-0.2+\DeltaX\L-0.03,0);
-    \particle{\DeltaX\L-0.03+\L/2,0}
-}
-\newcommand{\OscilatorInAir}{
-    \fill[pattern=north east lines] (-1,-1.25) rectangle (-1.25,1.25);
-    \draw[line width=0.4] (-1,-1.25) -- (-1,1.25);
-    \begin{scope}[shift={(-1,0)}]
-        \DrawOscilator
-    \end{scope}
-}
-
 \begin{scope}[shift={(\MinXPos,0)}]
     \foreach \camada in {1, ..., \N} {
         \pgfmathsetmacro{\MaxIndex}{\N - \camada}
         \foreach \i in {0, ..., \MaxIndex} {
             \pgfmathsetmacro{\Y}{(\camada - 1) * \dist * 0.8660}
             \pgfmathsetmacro{\X}{(\i - \MaxIndex/2) * \dist}
-            \particle[MediumGreen]{\X, \Y}[\Radius]
+            \DrawParticle[MediumGreen]{\X, \Y}[\Radius]
         }
     }
     \pgfmathsetmacro{\Y}{(\N-1)*\dist*0.8660}
     \pgfmathsetmacro{\X}{0*\dist}
-    \particle[MediumRed]{\X, \Y}[\Radius]
+    \DrawParticle[MediumRed]{\X, \Y}[\Radius]
     \pgfmathsetmacro{\Y}{\Y-1*\dist*0.8660}
     \pgfmathsetmacro{\X}{-0.5*\dist}
-    \particle[MediumRed]{\X, \Y}[\Radius]
+    \DrawParticle[MediumRed]{\X, \Y}[\Radius]
     \pgfmathsetmacro{\X}{0.5*\dist}
-    \particle[MediumRed]{\X, \Y}[\Radius]
+    \DrawParticle[MediumRed]{\X, \Y}[\Radius]
 \end{scope}
 
 \begin{scope}[shift={(0,\MidY)}]
@@ -85,7 +80,7 @@
     \foreach \j in \IdxList{
     \foreach \i in \IdxList{
         \begin{scope} [shift={(\i*\DeltaL,\j*\DeltaL)}]
-            \Lattice{0,0}{\L}
+            \DrawLatticeCell{0,0}{\L}
         \end{scope}
     }}
 \begin{scope}[shift={(-2.5*\DeltaL, -2.5*\DeltaL)}]    
@@ -105,3 +100,4 @@
     (+0.8,0.5*\MidY) to [bend right=40] node[below=1em, align=center] {Fixamos o oscilador em um\\ retículo vago da rede}(\MaxXPos-3,0.5*\MidY);
 
 \end{tikzpicture}
+}
