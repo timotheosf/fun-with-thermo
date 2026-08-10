@@ -1,0 +1,67 @@
+\NewDocumentCommand{\DrawDebyeSolid}{ O{5} O{5} O{0.4} }{
+\pgfmathsetseed{\number\time}
+\def\L{3}
+\def\DeltaL{3.05}
+\def\Lx{#1}
+\def\Ly{#2}
+\pgfmathsetmacro{\Temp}{#3}
+\pgfmathsetmacro{\WallLx}{int(\Lx+1)}
+\pgfmathsetmacro{\WallLy}{int(\Ly+1)}
+
+\draw[color=black, opacity=0.4, fill=PrimaryBackground, dashed, thick, step=\DeltaL]
+            (0, 0) grid (\WallLx*\DeltaL,\WallLy*\DeltaL);
+
+\foreach \j in {1,2, ...,\Ly}{
+\foreach \i in {1,2, ..., \Lx}{
+    \begin{scope} [shift={(\i*\DeltaL,\j*\DeltaL)}]
+        \pgfmathsetmacro{\DeltaX}{\Temp*rand}
+        \pgfmathsetmacro{\DeltaY}{\Temp*rand}
+        \NamedParticle{\DeltaX,\DeltaY}{atom-\i-\j}
+    \end{scope}
+}}
+
+
+\foreach \j in {1,...,\Ly}{
+\foreach \i in {0,\WallLx}{
+    \begin{scope} [shift={(\i*\DeltaL,\j*\DeltaL)}]
+        \node[circle, fill=white, inner sep=0pt, minimum size=0]
+            (atom-\i-\j) at (0,0) {};
+    \end{scope}
+}}
+\foreach \j in {0,\WallLy}{
+\foreach \i in {1,...,\Lx}{
+    \begin{scope} [shift={(\i*\DeltaL,\j*\DeltaL)}]
+        \node[circle, fill=white, inner sep=0pt, minimum size=0] 
+            (atom-\i-\j) at (0,0) {};
+    \end{scope}
+}}
+
+\foreach \j in {1,...,\Ly}{
+    \foreach \i in {0,...,\Ly}{        
+        \pgfmathsetmacro{\NextI}{int(\i+1.)} 
+        \draw let 
+            \p1 = ($(atom-\NextI-\j) - (atom-\i-\j)$),
+            \n1 = {veclen(\x1,\y1)}
+        in (atom-\i-\j) edge[FixedSpring=\n1] (atom-\NextI-\j);
+        
+    }
+}
+\foreach \j in {0,...,\Ly}{
+    \foreach \i in {1,...,\Ly}{
+        \pgfmathsetmacro{\NextJ}{int(\j+1.)}
+        \draw let 
+            \p1 = ($(atom-\i-\NextJ) - (atom-\i-\j)$),
+            \n1 = {veclen(\x1,\y1)}
+        in  (atom-\i-\j) edge[FixedSpring=\n1] (atom-\i-\NextJ);
+    }
+}
+
+\draw[color=ThemeColor, thick] 
+        (0,0) rectangle (\WallLx*\DeltaL,\WallLy*\DeltaL);
+}
+
+\NewDocumentCommand{\DebyeSolid}{ O{5} O{5} O{0.4} }{
+    \begin{tikzpicture}[x=\baselineskip, y=\baselineskip]
+        \DrawDebyeSolid[#1][#2][#3]
+    \end{tikzpicture}
+}

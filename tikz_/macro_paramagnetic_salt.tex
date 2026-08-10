@@ -1,0 +1,46 @@
+\newcommand{\spinUp}[1]{
+    \draw[dashed, color=AccentColor] (#1,-2.5) -- (#1,2.5);
+    \particle{#1,0}
+    \draw [-{Triangle[length=0.5em, width=0.4em]}, very thick, color=MediumRed]
+    (#1-1,-1*1.73) -- (#1+1,1*1.73);
+}
+\newcommand{\spinDown}[1]{
+    \draw[dashed, color=AccentColor] (#1,-2.5) -- (#1,2.5);
+    \particle{#1,0}
+    \draw [-{Triangle[length=0.5em, width=0.4em]}, very thick, color=MediumRed]
+    (#1+1,1*1.73) -- (#1-1,-1*1.73);
+}
+\newcommand{\Hfield}[1]{
+    \draw [-{Triangle[length=0.5em, width=0.4em]}, very thick, color=MediumGreen]
+    (#1,-2.5) -- (#1,2.5);
+    \node[color=MediumGreen] at (#1-1,0) {$\overrightarrow{\mathbf{H}}$};
+}
+
+\newcommand{\DrawParamagneticSalt}{
+    \begin{scope}[shift={(0,0)}]
+        \Hfield{-8}, \spinUp{-4}, \spinUp{0}, \spinUp{4}
+        \node[right] at (5.7,0.5) {$E=-3\mu\mathrm{H}$};
+        \node[right] at (5.7,-0.5) {$\Omega=1$};
+    \end{scope}
+    \begin{scope}[shift={(0,-6)}]
+        \Hfield{-8}, \spinUp{-4}, \spinUp{0}, \spinDown{4}
+        \node[right] at (6,0.5) {$E=-1\mu\mathrm{H}$};
+        \node[right] at (6,-0.5) {$\Omega=3$};
+    \end{scope}
+    \begin{scope}[shift={(0,-12)}]
+        \Hfield{-8}, \spinUp{-4}, \spinDown{0}, \spinDown{4}
+        \node[right] at (6,0.5) {$E=1\mu\mathrm{H}$};
+        \node[right] at (6,-0.5) {$\Omega=3$};
+    \end{scope}
+    \begin{scope}[shift={(0,-18)}]
+        \Hfield{-8}, \spinDown{-4}, \spinDown{0}, \spinDown{4}
+        \node[right] at (6,0.5) {$E=3\mu\mathrm{H}$};
+        \node[right] at (6,-0.5) {$\Omega=1$};
+    \end{scope}
+}
+
+\newcommand{\ParamagneticSalt}{
+    \begin{tikzpicture}[x=\baselineskip, y=\baselineskip]
+        \DrawParamagneticSalt
+    \end{tikzpicture}
+}

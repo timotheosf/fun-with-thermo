@@ -1,0 +1,33 @@
+\tikzset{
+    spring/.style={
+        line width=0.4,
+        color=ThemeColor!7!black!80,
+        decorate, % Avisa que a linha não será reta
+        decoration={
+            coil, % Tipo da decoração (mola)
+            aspect=0.4, % Deixa a mola "achatada" parecendo 3D
+            segment length=3, % Comprimento de cada espira
+            amplitude=2,    % "Raio" ou grossura da mola
+            pre length=1,     % Pedaço de reta antes de começar a enrolar
+            post length=1     % Pedaço de reta antes de terminar
+        }
+    }
+}
+
+\tikzset{
+    % O estilo 'spring' agora recebe um argumento #1 (a distância total)
+    FixedSpring/.style={
+        line width=0.4,
+        color=ThemeColor!7!black!80,
+        decorate,
+        decoration={
+            coil,
+            aspect=0.4,
+            amplitude=2pt,
+            % A Matemática pura: Tira 4pt das bordas, divide por 6 espiras e garante a unidade pt
+            segment length={(#1 - 4)/13 * 1pt}, 
+            pre length=2pt,
+            post length=2pt
+        }
+    }
+}

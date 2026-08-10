@@ -1,0 +1,28 @@
+\def\UnitSize{1.9}
+\pgfmathsetseed{\number\time}
+\def\L{3}
+\def\DeltaL{3.05}
+
+\NewDocumentCommand{\DrawParticle}{ O{DarkBlue!60!black} m O{0.2} O{} }{
+    % Sintax:
+    %  \DrawParticle[color]{position}[size][name]
+    %
+    \node[circle, fill=#1, inner sep=0pt, minimum size=#3]
+        (#4) at (#2) {};
+}
+
+\NewDocumentCommand{\DrawSquare}{ O{PrimaryColor} O{PrimaryBackground} m O{1.9} }{
+    % Sintax:
+    %  \DrawSquare[draw_color][fill_color]{position}[length size]
+    %
+    \draw[color=#1, fill=#2, thick, shift={(#3)}] 
+        (-#4/2, -#4/2) rectangle (#4/2, #4/2);
+}
+
+\NewDocumentCommand{\DrawLatticeCell}{ O{PrimaryBackground} m O{1.9} }{
+    % Sintax:
+    %  \DrawLatticeCell[fill_color]{position}[length size]
+    %
+    \fill[color=#1,shift={(#2)}] 
+        (-#3/2, -#3/2) rectangle (#3/2, #3/2);
+}
