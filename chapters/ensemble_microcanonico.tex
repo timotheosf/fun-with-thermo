@@ -1,6 +1,6 @@
 \chapter{Ensemble Microcanônico}
 
-    O chamado \textit{Ensemble Microcanônico} é definido considerando um valor \textit{fixo} da energia interna de um sistema, $U$, bem como do número de partículas, $N$, e do volume $V$. Procura-se, então, a multiplicidade do macroestado correspondente, $\Omega$ -- isto é, o número de microestados que correspondem à mesma configuração macroscópica. A partir da multiplicidade $\Omega$, podemos obter todas as informações da termodinâmica do sistema a partir da entropia de Boltzmann.
+    O chamado \textit{Ensemble Microcanônico} é definido considerando um valor \textit{fixo} da energia interna de um sistema, $U$, bem como do número de partículas, $N$, e do volume $V$. Procura-se, então, a multiplicidade do macroestado correspondente, $\Omega$ --- isto é, o número de microestados que correspondem à mesma configuração macroscópica. A partir da multiplicidade $\Omega$, podemos obter todas as informações da termodinâmica do sistema a partir da entropia de Boltzmann.
 
     \begin{statementbox}[label=def:entropia_de_boltzmann]{Entropia de Boltzmann}
         Dado um sistema no macroestado definido pelos valores $(U,V,N)$ e com multiplicidade $\Omega$, a entropia de Boltzmann é a função de estado $S$ definida por:
@@ -37,10 +37,10 @@
 
         Vamos pensar, primeiramente, num sistema composto apenas por 3 spins. Assim temos, ao todo, quatro configurações possíveis para o sistema: todos spins alinhados ao campo; todos spins anti-paralelo ao campo; dois spins alinhados e apenas um spin alinhado, como mostra a \cref{fig:paramagnetic_salt}.
 
-        \begin{center}
-            \ParamagneticSalt
-            \captionof{figure}{Paramagneto de dois estados. \label{fig:paramagnetic_salt}}
-        \end{center}
+        \tikzFig%
+            {\ParamagneticSalt}%
+            [Paramagneto de dois estados.]%
+            [paramagnetic_salt]%
 
         Se a energia total do sistema for $E=-\upmu_m\mathrm{H}$, devemos ter dois spins $\uparrow$ e um spin $\downarrow$, de modo que \[2\varepsilon_{\uparrow}+1\varepsilon_{\downarrow}=-2\upmu_m\mathrm{H}+\upmu_m\mathrm{H}=-\upmu_m\mathrm{H}.\] Resta determinar \textit{de quantas formas} podemos ter dois spins $\uparrow$ e um $\downarrow$. 
         
@@ -68,26 +68,25 @@
         \noindent\textbf{Resolução:}\\
         \indent A \cref{fig:EinsteinSolid} mostra uma imagem pictórica do modelo de Einstein: são $N$ osciladores, todos independentes um do outro, mas localizados em posições fixas no espaço. Cada oscilador $j$ tem energia $E_j=n_j\varepsilon$, com $n_j$ natural.
         
-        \begin{center}
-            \EinsteinSolid[5][5][0.8]
-            \captionof{figure}{Sólido de Einstein: `caixas' contendo osciladores independentes um do outro -- isto é, a energia de um não interfere na do outro.\label{fig:EinsteinSolid}}
-        \end{center}
+        \tikzFig%
+        {\EinsteinSolid[5][5][0.8]}%
+        [Sólido de Einstein: `caixas' contendo osciladores independentes um do outro --- isto é, a energia de um não interfere na do outro.]%
+        [EinsteinSolid]
 
         Assim, a energia total do sistema é dada por \[U=E_1+E_2+\cdots+E_N=n_1\varepsilon+n_2\varepsilon+\cdots+n_N\varepsilon=M\varepsilon\,,\] onde $M$ representa o múltiplo total de energia $\varepsilon$ que podemos distribuir dentre os $N$ osciladores.
 
-        Para descobrirmos a multiplicidade, vamos recorrer à estratégia de tentar `montar' um sistema a partir \textit{ex nihilo}. Empilhamos nossos $M$ múltiplos de energia e enfileiramos os $N$ osciladores (que ocuparão exatamente $N$ lugares na rede do sólido). Fazemos o seguinte processo:
+        Para descobrirmos a multiplicidade, vamos recorrer à estratégia de tentar `montar' um sistema \textit{ex nihilo}. Empilhamos nossos $M$ múltiplos de energia e enfileiramos os $N$ osciladores (que ocuparão exatamente $N$ lugares na rede do sólido). Fazemos o seguinte processo:
         \begin{enumerate}
             \item Escolhemos a quantidade $n_j$ de energia;
             \item Dotamos o $j$-ésimo oscilador com ela;
             \item Fixamos este oscilador num dos $N-j$ sítios livres da rede (o sólido).
         \end{enumerate}
         A \cref{fig:EinsteinSolidMultiplicity} mostra com é este processo.
-
-        \begin{center}
-            \EinsteinSolidMultiplicity
-            \captionof{figure}{Processo de construção do sólido de Einstein.
-            \label{fig:EinsteinSolidMultiplicity}}
-        \end{center}
+        
+        \tikzFig%
+            {EinsteinSolidMultiplicity}%
+            [Processo de construção do sólido de Einstein.]%
+            [EinsteinSolidMultiplicity]
 
         Para o primeiro oscilador, temos um total de $M$ múltiplos de energia; para o segundo, $M-n_1$, e assim por diante, de modo que temos um total de $M!$ permutações (formas) de distribuir a energia entre os osciladores. Ao mesmo tempo, para o primeiro oscilador temos $N$ retículos disponíveis para escolher, $N-1$ para o segundo e assim por diante, de modo que, para $N-1$-ésimo oscilador, temos exatamente um único sítio: são $(N-1)!$ configurações diferentes, porque o último sempre fica no lugar `que sobra'.
 
@@ -103,9 +102,10 @@
         \indent O problema consiste em distribuir as $N$ partículas nas $V$ células do sistema. Para isso, a primeira pode `escolher' dentre um total de $V$ células; a segunda, $V-1$ (exclui-se a célula ocupada pela primeira); e assim por diante. Em outras palavras, são
         \[ V\times(V-1)\times(V-2)\times\cdots\times(V-N+1) = \frac{V!}{(V-N)!}\]
 
-        \begin{center}
-            \LatticeGas
-        \end{center}
+        \tikzFig%
+            {\LatticeGas}%
+            [Processo de construção do gás de rede]%
+            [lattice_gas]
 
 
         maneiras de ocupar as células. Como as partículas são indistinguíveis, para obtermos a multiplicidade correta basta dividir o nosso resultado por $N!$:
@@ -126,7 +126,7 @@
         Considere um gás de rede cujas $N$ partículas podem ser adsorvidas em uma superfície. O recipiente disponível para o gás contém $V$ sítios, e a superfície de adsorção, $M$ sítios. As partículas não interagem entre si, mas apenas com a superfície. Assim, uma partícula solta no gás possui energia $U=0$, enquanto uma partícula adsorvida possui energia $U=-\varepsilon$ ($\varepsilon>0$). O sistema está isolado com energia $U=-n\varepsilon$, em que $n\leq N$. Encontre a multiplicidade do sistema.
         \tcblower
         \noindent\textbf{Resolução:}\\
-        \indent Uma vez que as partículas do gás não interagem entre si, podemos tratar este problema como dois subsistemas independentes: as partículas do gás no "recipiente", e as partículas adsorvidas. Isso nos permite escrever a multiplicidade como:
+        \indent Uma vez que as partículas do gás não interagem entre si, podemos tratar este problema como dois subsistemas independentes: as partículas do gás no ``recipiente'', e as partículas adsorvidas. Isso nos permite escrever a multiplicidade como:
         \[ \Omega = \Omega_{\text{livres}}\times\Omega_{\text{adsorvidas}}\,. \]
 
         Como a energia total é $U=-n\varepsilon$, temos $n$ partículas adsorvidas e, consequentemente, $N-n$ partículas livres. Assim, basta usar a \cref{eq:multiplicidade_gas_de_rede} para o primeiro termo:
@@ -149,7 +149,7 @@
 
 \section{Termodinâmica em ação}
 
-    A partir da multiplicidade, podemos extrair todas as propriedades termodinâmicas do sistema com a entropia de Boltzmann. A Figura \ref{fig:maquina_da_mecanica_estatistica} ilustra o processo: basta \textit{girar a manivela} da mecânica estatística; isto é, fazemos corresponder as grandezas estatísticas aos potenciais da termodinâmica clássica.
+    A partir da multiplicidade, podemos extrair todas as propriedades termodinâmicas do sistema com a entropia de Boltzmann. A \cref{fig:maquina_da_mecanica_estatistica} ilustra o processo: basta \textit{girar a manivela} da mecânica estatística; isto é, fazemos corresponder as grandezas estatísticas aos potenciais da termodinâmica clássica.
 
     Para este procedimento, uma ferramenta que constantemente usaremos é a aproximação de Stirling (cf \cref{eq_appx:approximacao_de_stirling}):
     \begin{equation}
@@ -172,21 +172,46 @@
         \tcblower
         \noindent\textbf{Resolução:}\\
         \indent Temos \[S(U,N)=k_B\ln(\Omega)=k_B\left[\ln(N!)+\ln\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)!+\ln\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)!\right].\] No limite termodinâmico, podemos usar a fórmula de Stirling (cf. \cref{eq_appx:approximacao_de_stirling}), com $\ppu=U/N$ fixo:
+        \begin{align*}
+            \frac{1}{k_B}S(U,N) =& N\ln N - N+\\
+                                 -&\left(\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right)
+                                 \ln\left[N\left(\frac{1}{2}+\frac{\ppu}{2\upmu_m\mathrm{H}}\right)\right] + \left[\frac{N}{2}+\frac{U}{2\upmu_m\mathrm{H}}\right]+\\
+                                 -&\left(\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right)
+                                 \ln\left[N\left(\frac{1}{2}-\frac{\ppu}{2\upmu_m\mathrm{H}}\right)\right] + \left[\frac{N}{2}-\frac{U}{2\upmu_m\mathrm{H}}\right]\,,
+        \end{align*}
+        donde encontramos:
+        \begin{equation}
+            S = -\frac{k_BN}{2}\left[\left(1+\frac{\ppu}{\upmu_m\mathrm{H}}\right)\ln\left(\frac{1}{2}+\frac{\ppu}{2\upmu_m\mathrm{H}}\right) + \left(1-\frac{\ppu}{\upmu_m\mathrm{H}}\right)\ln\left(\frac{1}{2}-\frac{\ppu}{2\upmu_m\mathrm{H}}\right)\right]\,.
+        \end{equation}
+
+        Veja que, efetivamente, encontramos uma entropia dada pela a contribuição de dois termos: $1+\ppu/\upmu_m\mathrm{H}$ e $1-\ppu/\upmu_m\mathrm{H}$, que correspondem, respectivamente, aos spins no estado antiparalelo e no estado paralelo ao campo.
     \end{solved}
 
     \begin{solved}{Entropia do sólido de Einstein}{}
-        A partir da multiplicidade do sólido de Einstein, \[\Omega(U,N)=\frac{\left(\frac{U}{\varepsilon}+N-1\right)!}{\left(\frac{U}{\varepsilon}\right)!(N-1)!},\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
+        A partir da multiplicidade do sólido de Einstein, \[\Omega(U,N)=\frac{\left(\frac{U}{\varepsilon}+N-1\right)!}{\left(\frac{U}{\varepsilon}\right)!(N-1)!}\,,\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
         \tcblower
         \noindent\textbf{Resolução:}\\
-        \indent Temos \[S(U,N)=k_B\ln(\Omega)\]
+        \indent Temos \[S(U,N)=k_B\ln(\Omega) = k_B\ln\left[\frac{\left(\frac{U}{\varepsilon}+N-1\right)!}{\left(\frac{U}{\varepsilon}\right)!(N-1)!}\right]\,,\]
+        que, no limite termodinâmico com a aproximação de Stirling, dá:
+        \begin{align*}
+            \frac{1}{k_B}S(U,N) =& \left(\frac{U}{\varepsilon}+N-1\right)\ln\left(\frac{U}{\varepsilon}+N-1\right) - \left(\frac{U}{\varepsilon}+N-1\right)+\\
+                                 & \frac{U}{\varepsilon}\ln\frac{U}{\varepsilon} - \frac{U}{\varepsilon} + (N-1)\ln(N-1) =\\
+                                =&\left(\frac{U}{\varepsilon}+N\right)\ln\left(\frac{U}{\varepsilon}+N\right) - \left(\frac{U}{\varepsilon}+N\right)+\\
+                                 & \frac{U}{\varepsilon}\ln\frac{U}{\varepsilon} - \frac{U}{\varepsilon} + N\ln N\,,
+        \end{align*}
+        donde encontramos:
+        \begin{equation}
+            S = k_BN\left[\ln\left(\frac{\ppu}{\varepsilon}+1\right) + \frac{\ppu}{\varepsilon} \ln\left(\frac{\varepsilon}{\ppu}+1\right)\right]\,.
+        \end{equation}
+
+        Novamente, 
     \end{solved}
 
-    \begin{solved}{Entropia do gás ideal monoatômico}{}
-        A partir da multiplicidade do gás ideal, \[\Omega(U,N)=\frac{3N}{2(3N/2)!}\left(\frac{2\pi m}{h^2}\right)^{\frac{3N}{2}}U^{\frac{3N}{2}-1}\delta U,\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
-        \tcblower
-        \noindent\textbf{Resolução:}\\
-        \indent Temos \[S(U,N)=k_B\ln(\Omega)\]
-    \end{solved}
+\subsection{Temperatura e funções resposta}
+
+
+
+    
 
 \starredsection{Espectro contínuo de energia\label{sec:espec_continuo_de_energia}}
 
@@ -238,6 +263,13 @@
         Usando a Eq. \eqref{eq_appx:volume_hiperesfera} para o volume de uma hiperesfera de raio $R$, temos: \[V_{3N}(\sqrt{2m(U+\delta U)})=\frac{(2\pi m)^{3N/2}}{\big(3N/2\big)!}(U+\delta U)^{3N/2}\underbrace{\approx}_{\text{Série binomial}}\frac{(2\pi mU)^{3N/2}}{\big(3N/2\big)!}\left(1+\frac{3N}{2}\frac{\delta U}{U}\right),\]
         de modo que a integral sobre os momentos fica: \[\idotsint_{U=\sum\vec{\p}^2_j/2m}\diff^3\p_1\dots\diff^3\p_N = \frac{3N}{2(3N/2)!}\big(2\pi m\big)^{3N/2}U^{3N/2-1}\delta U,\] resultando em:
         \[\Omega(U,N)=\frac{3N}{2(3N/2)!}\left(\frac{2\pi m}{h^2}\right)^{\frac{3N}{2}}U^{\frac{3N}{2}-1}\delta U.\] Contudo, entra aqui um problema: precisamos adicionar um fator \textit{ad hoc} a este termo para que o limite termodinâmicos corresponda à correta representação do gás ideal. Comentamos sobre isto no Ex. Resolvido ADICIONAR EXERCÍCIO RESOLVIDO.
+    \end{solved}
+
+    \begin{solved}{Entropia do gás ideal monoatômico}{}
+        A partir da multiplicidade do gás ideal, \[\Omega(U,N)=\frac{3N}{2(3N/2)!}\left(\frac{2\pi m}{h^2}\right)^{\frac{3N}{2}}U^{\frac{3N}{2}-1}\delta U,\] determine a entropia de Boltzmann do sistema no limite termodinâmico.
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Temos \[S(U,N)=k_B\ln(\Omega)\]
     \end{solved}
 
 \newpage

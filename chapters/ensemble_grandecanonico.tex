@@ -7,12 +7,16 @@
     com \[\beta=\frac{1}{k_BT}\,,\] e \[\alpha=\frac{\mu}{k_BT}\,.\] De fato, para conhecer a termodinâmica de um sistema no ensemble grandecanônico, basta conhecer a \textit{função de partição grandecanônica}
 
     \begin{statementbox}{Função de partição grandecanônica}
-        Dado um ensemble grandecanônico, definimos sua função de partição $\mathcal{Z}_G$ como a soma dos pesos de Boltzmann sobre \textit{todos} os estados de equilíbrio possíveis ao sistema:
+        Dado um ensemble grandecanônico, definimos sua função de partição $\zg$ como a soma dos pesos de Boltzmann sobre \textit{todos} os estados de equilíbrio possíveis ao sistema:
         \begin{equation}
-            \mathcal{Z}_C(T,V,N) = \sum_{j}e^{-E(j)\beta+N(j)\alpha}.
+            \zg(T,V,\mu) = \sum_{j}e^{-E(j)\beta+N(j)\alpha}.
         \end{equation}
         Esta função está ligada ao chamado \textit{potencial grande canônico} pela relação:
         \begin{equation}
-            \mathcal{A}(T,V,\mu)=-k_BT\ln\mathcal{Z}_G.
+            \mathcal{A}(T,V,\mu)=-k_BT\ln\zg\,,
+        \end{equation}
+        lembrando que
+        \begin{equation}
+            \mathcal{A}\equiv U - TS + \mu N\,.
         \end{equation}
     \end{statementbox}
