@@ -2,6 +2,16 @@
 \pgfmathsetseed{\number\time}
 \def\L{3}
 \def\DeltaL{3.05}
+\tikzexternalize[prefix=fig-]
+\tikzset{
+    external/system call={
+        lualatex \tikzexternalcheckshellescape 
+        -halt-on-error 
+        -interaction=batchmode 
+        -output-directory=build
+        -jobname "\image" "\texsource"
+    }
+}
 
 \NewDocumentCommand{\DrawParticle}{ O{DarkBlue!60!black} m O{0.4\baselineskip} O{} }{
     % Sintax:
@@ -25,4 +35,21 @@
     %
     \fill[color=#1,shift={(#2)}] 
         (-#3/2, -#3/2) rectangle (#3/2, #3/2);
+}
+
+\NewDocumentCommand{\tikzFig}{
+    O{figure}
+    m
+    O{TikZ figure caption.}
+    O{}
+}{  
+    % Sintax:
+    %  \insertTikz[caption setup type (figure)]{tikz macro}[caption][label]
+    %
+    \begin{center}
+        \captionsetup{type=#1}
+        #2
+        \caption{#3}%
+        \label{fig:#4}%
+    \end{center}
 }
