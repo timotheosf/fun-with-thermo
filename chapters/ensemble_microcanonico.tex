@@ -204,14 +204,70 @@
             S = k_BN\left[\ln\left(\frac{\ppu}{\varepsilon}+1\right) + \frac{\ppu}{\varepsilon} \ln\left(\frac{\varepsilon}{\ppu}+1\right)\right]\,.
         \end{equation}
 
-        Novamente, 
+        Novamente, temos dois termos que contribuem para a entropia 
     \end{solved}
 
 \subsection{Temperatura e funções resposta}
 
+    Assim como obtemos a entropia a partir da multiplicidade, podemos estudar as primeiras --- as variáveis termodinâmicas conjugadas --- e as segundas derivadas --- as funções resposta --- e $S$. Lembrando que:
+    \begin{equation}
+        \diff S = \frac{1}{T}\diff U + \frac{\xi_\alpha}{T}\diff X_\alpha - \frac{\mu}{T}\diff N\,,
+    \end{equation}
+    em que $X_{\alpha}$ são os deslocamentos generalizados e $\xi_{\alpha}$, as respectivas forças.
 
+    \begin{solved}{Temperatura no Paramagneto de dois estados}{}
 
-    
+        Considere o Paramagneto de dois estados. Determine como a energia por partícula, $\ppu$, varia com a temperatura, $T$, e determine o calor específico do sistema.
+        
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Temos
+        \[\frac{1}{T} =  \]
+    \end{solved}
+
+    \begin{solved}{Temperatura no Sólido de Einstein}{}
+
+        Considere o Sólido de Einstein. Determine como a energia por partícula, $\ppu$, varia com a temperatura, $T$, e determine o calor específico do sistema.
+        
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \indent Temos
+        \[\frac{1}{T} = \left(\frac{\partial \pps}{\partial \ppu}\right) = \frac{k_B}{\varepsilon}\ln\left(\frac{\varepsilon}{\ppu}+1\right)\,, \]
+        que, invertendo para $\ppu$, dá a expressão
+        \[\ppu = \frac{\varepsilon}{e^{\varepsilon/k_BT}-1}\,.\]
+        Assim, o calor específico por partícula é dado por:
+        \[c_V = \pderivative{\ppu}{T} =  \frac{\varepsilon^2}{k_BT^2}\frac{e^{\varepsilon /k_BT}}{{\left(e^{\varepsilon /k_BT}-1\right)^{2}}}.\]
+        
+        É interessante notar que, no limite de altas temperaturas, isto é, $kT\gg\varepsilon$, recuperamos o calor específico clássico para os sólidos. Com efeito:
+        \[c_V\approx \frac{\varepsilon^2}{k_BT^2}\frac{1 + \left(\frac{\varepsilon}{k_BT}\right)}{{\left(\frac{\varepsilon}{k_BT}\right)^2\left[1 + \frac{1}{2}\left(\frac{\varepsilon}{k_BT}\right) \right]^{2}}} \approx k_B\frac{1 + \left(\frac{\varepsilon}{k_BT}\right)}{1 + \frac{1}{4}\left(\frac{\varepsilon}{k_BT}\right)} \approx k_B\,.\]
+
+        Podemos plotar estas curvas.
+
+    \end{solved}
+
+    \begin{solved}{Potencial químico no Gás de Rede}{}
+        Retornando ao gás de rede, cuja multiplicidade calculamos por \[\Omega(N,V)=\frac{V!}{(V-N)!N!}\,.\] \textbf{(a)} Determine o potencial químico para este gás. Interprete o resultado: é mais (entropicamente) favorável adicionar ou remover partículas das células? \textbf{(b)} Mostre que a mesma entropia, no limite de baixas densidades, devolve a equação do gás ideal.
+
+        \tcblower
+        \noindent\textbf{Resolução:}\\
+        \noindent\textbf{(a)}\\
+        \indent Temos, no limite termodinâmico,
+        \[ S(V,N) = k_B N\left[ \ln\left(\frac{V}{N}-1\right) - \frac{V}{N}\ln\left(1-\frac{N}{V}\right)\right]\,,\]
+        de modo que o potencial químico, em termos de $\ppv$, é dado por:
+        \[\frac{\mu}{T} = \pderivative{S}{N}[V] = k_B\ln(\ppv-1)\,. \]
+        
+        Veja que o sinal de $\mu$ muda em $\ppv=2$. Com efeito, caso tivermos $\ppv<2$, isto é, se metade dos $V$ retículos já tiverem ocupados, \[N\geq \frac{V}{2}\,,\] $\mu < 0$ e a colocação de novas moléculas de gás resultaria em aumento de entropia. De outra parte, caso for $\ppv>2$ ($N\leq V/2$), a adição de novas moléculas \textit{reduz} a entropia do sistema!
+
+        \noindent\textbf{(b)}\\
+        \indent Pelo cálculo acima, podemos escrever
+        \[\pps = k_B\left[\ln(\ppv-1)-\ppv\ln\left(1-\frac{1}{\ppv}\right)\right]\,,\]
+        de modo que a pressão pode ser calculada como:
+        \[\frac{p}{T} = \pderivative{\pps}{\ppv} = k_B\left(\frac{1}{\ppv-1}-\ln\left(1-\frac{1}{\ppv}\right)-\frac{1}{v-1}\right) = -k_B\ln\left(1-\frac{1}{v}\right)\,.\]
+        Finalmente, no limite de gás de baixa densidade ($\ppv\gg 1$), temos
+        \[\frac{p}{T}\approx = k_B \ppv \Longrightarrow pV=k_BNT\,,\]
+        como queríamos mostrar.
+    \end{solved}
+
 
 \starredsection{Espectro contínuo de energia\label{sec:espec_continuo_de_energia}}
 
