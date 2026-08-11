@@ -18,6 +18,12 @@
 \newcommand{\diff}{
     \mathop{}\!\symup{d}}
 
+\NewDocumentCommand{\pderivative}{
+    m m O{}
+}{
+    \left(\frac{\partial #1}{\partial #2}\right)_{#3}
+}
+
 %> Grandezas caligráficas por partícula
 % NENHUMA MUDANÇA AQUI! Como preservamos o \dcal no passo anterior, 
 % isso vai continuar funcionando perfeitamente.
@@ -29,6 +35,9 @@
     
 \newcommand{\ppu}{ %per particle energy
     \dcal{u}}
+
+\newcommand{\ppv}{
+    \dcal{v}}
   
 \newcommand{\zc}{
     \pzcal{Z}_C
