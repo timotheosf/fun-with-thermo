@@ -84,7 +84,7 @@
         A \cref{fig:EinsteinSolidMultiplicity} mostra com é este processo.
         
         \tikzFig%
-            {EinsteinSolidMultiplicity}%
+            {\EinsteinSolidMultiplicity}%
             [Processo de construção do sólido de Einstein.]%
             [EinsteinSolidMultiplicity]
 
@@ -231,17 +231,10 @@
         A Figura \ref{fig:oscilador_harmonico_espaco_de_fase} vai nos guiar neste cálculo. A área da elipse maior, com energia $U+\delta U$, é \[\pi\sqrt{\frac{2(U+\delta U)}{m\omega^2}}
 \sqrt{2m(U+\delta U)} = \pi\frac{2(U+\delta U)}{\omega},\] e a área da elipse menor, é \[\pi\frac{2U}{\omega},\] de modo que \[\Omega = \frac{1}{h}\left(\pi\frac{2(U+\delta U)}{\omega}-\pi\frac{2U}{\omega} \right)=\frac{2\pi}{h\omega}\delta U.\] Vemos que, neste caso muito simples, o volume do espaço de fase acessível ao sistema é uma função independente da energia!
 
-        \begin{center}
-            % 1. Coloca a âncora do link no topo e define o tipo
-            \captionsetup{type=figure} 
-            
-            % 2. Insere o seu gráfico TikZ
-            \input{figures/oscilador_harmonico_espaco_de_fase}
-            
-            % 3. Agora você volta a usar o \caption normal (sem o 'of')
-            \caption{Espaço de fase de um oscilador harmônico unidimensional.}
-            \label{fig:oscilador_harmonico_espaco_de_fase}
-        \end{center}
+        \tikzFig%
+            {\input{figures/oscilador_harmonico_espaco_de_fase}}%
+            [Espaço de fase de um oscilador harmônico unidimensional.]%
+            [oscilador_harmonico_espaco_de_fase]
     \end{solved}
 
     \begin{solved}{Multiplicidade de uma partícula de gás ideal}{}
