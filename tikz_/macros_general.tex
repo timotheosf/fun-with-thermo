@@ -53,3 +53,43 @@
         \label{fig:#4}%
     \end{center}
 }
+
+\NewDocumentCommand{\PlotFig}{ O{} m O{ThemeColor}}{
+    \begin{tikzpicture}[baseline]
+        \PlotAxis[#1]{#2}[#3]
+    \end{tikzpicture}%
+}
+
+\NewDocumentCommand{\PlotAxis}{ O{} m O{ThemeColor} +O{}}{
+    \DrawPlot[#1]{
+        \addplot [#3, very thick] { #2 };
+        #4
+}%
+}
+
+\NewDocumentCommand{\DrawPlot}{O{} +m}{
+    \begin{tikzpicture}[baseline]
+    \begin{axis}[
+        grid=major,
+        samples=100,
+        axis lines=middle,
+        enlargelimits=true,
+        xlabel style={
+        at={(current axis.south)},
+        anchor=north,
+        yshift=-1.5ex},
+        ylabel style={
+        yshift=1ex,
+        anchor=north west},
+        #1
+    ]
+        #2        
+    \end{axis}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\CenterPlot}{O{} +m}{
+    \begin{center}
+    \DrawPlot[#1]{#2}
+    \end{center}
+}
