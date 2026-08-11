@@ -222,7 +222,32 @@
         \tcblower
         \noindent\textbf{Resolução:}\\
         \indent Temos
-        \[\frac{1}{T} =  \]
+        \begin{align*}
+        \frac{1}{T} =& -\frac{k_B}{2\upmu_m\mathrm{H}}\left[\ln\left(\frac{1}{2}+\frac{\ppu}{2\upmu_m\mathrm{H}}\right)-\ln\left(\frac{1}{2}-\frac{\ppu}{2\upmu_m\mathrm{H}}\right)\right]=\\
+        =-&\frac{k_B}{2\upmu_m\mathrm{H}}\ln\left(\frac{1+\ppu/\upmu_m\mathrm{H}}{1-\ppu/\upmu_m\mathrm{H}}\right) = -\frac{k_B}{\upmu_m\mathrm{H}}\tanh^{-1}\left(\frac{\ppu}{\upmu_m\mathrm{H}}\right)\,.
+        \end{align*}
+        Isto é, encontramos uma função que pode assumir valores positivos e negativos.
+        
+        \begin{center}
+        \setcaptiontype{figure}
+        \PlotFig[%
+            xlabel={Energia $\ppu\,\,(\upmu_m\mathrm{H})$},
+            ylabel={$\pps\,\,(k_B)$},
+            domain=-0.999:0.999,
+            width=0.58\linewidth]
+            {-0.5*((1+x)*ln(0.5+0.5*x) + (1-x)*ln(0.5-0.5*x))}%
+            \hfill%
+        \PlotFig[%
+            xlabel={Energia $\ppu\,\,(\upmu_m\mathrm{H})$},
+            ylabel={$1/T\,\,(k_B/\upmu_m\mathrm{H})$},
+            domain=-0.999:0.999,
+            width=0.58\linewidth]
+            {-ln((1+x)/(1-x))}
+            [MediumRed]
+        \caption{À esquerda, a entropia em função da energia $\ppu$ (em unidades de $\upmu_m\mathrm{H}$); à direita, a temperatura em função da energia $\ppu$ (em unidades de $\upmu_m\mathrm{H}$).}
+        \end{center}
+        
+
     \end{solved}
 
     \begin{solved}{Temperatura no Sólido de Einstein}{}
@@ -243,10 +268,22 @@
 
         Podemos plotar estas curvas.
 
+        \CenterPlot[%
+                xlabel={Temperatura $T\,\,(\varepsilon/k_B)$},
+                ylabel={$c_V\,\,(k_B)$},
+                domain=0:4,
+                width=0.7\linewidth]{
+
+                \addplot[MediumRed, very thick] {(1/x)^2*(exp(1/x)/(exp(1/x)-1)^2)};
+                
+                \draw[dashed, very thick] (0,1) -- (4,1);
+                \node[anchor=north,align=center] at (3.1,1) {$c_V\to k_B$};
+}
+
     \end{solved}
 
     \begin{solved}{Potencial químico no Gás de Rede}{}
-        Retornando ao gás de rede, cuja multiplicidade calculamos por \[\Omega(N,V)=\frac{V!}{(V-N)!N!}\,.\] \textbf{(a)} Determine o potencial químico para este gás. Interprete o resultado: é mais (entropicamente) favorável adicionar ou remover partículas das células? \textbf{(b)} Mostre que a mesma entropia, no limite de baixas densidades, devolve a equação do gás ideal.
+        Retornando ao gás de rede, cuja multiplicidade calculamos por \[\Omega(N,V)=\frac{V!}{(V-N)!N!}\,.\] \textbf{(a)} Determine o potencial químico para este gás. Interprete o resultado: é (entropicamente) mais favorável adicionar ou remover partículas das células? \textbf{(b)} Mostre que a mesma entropia, no limite de baixas densidades, devolve a equação do gás ideal.
 
         \tcblower
         \noindent\textbf{Resolução:}\\
@@ -254,17 +291,39 @@
         \indent Temos, no limite termodinâmico,
         \[ S(V,N) = k_B N\left[ \ln\left(\frac{V}{N}-1\right) - \frac{V}{N}\ln\left(1-\frac{N}{V}\right)\right]\,,\]
         de modo que o potencial químico, em termos de $\ppv$, é dado por:
-        \[\frac{\mu}{T} = \pderivative{S}{N}[V] = k_B\ln(\ppv-1)\,. \]
+        \[\frac{\mu}{T} = -\pderivative{S}{N}[V] = -k_B\ln(\ppv-1)\Longrightarrow \mu = -k_BT\ln(\ppv-1)\,. \]
         
-        Veja que o sinal de $\mu$ muda em $\ppv=2$. Com efeito, caso tivermos $\ppv<2$, isto é, se metade dos $V$ retículos já tiverem ocupados, \[N\geq \frac{V}{2}\,,\] $\mu < 0$ e a colocação de novas moléculas de gás resultaria em aumento de entropia. De outra parte, caso for $\ppv>2$ ($N\leq V/2$), a adição de novas moléculas \textit{reduz} a entropia do sistema!
+        Veja que o sinal de $\mu$ muda em $\ppv=2$. Com efeito, caso tivermos $\ppv<2$, isto é, se metade dos $V$ retículos já tiverem ocupados, \[N\geq \frac{V}{2}\,,\] $\mu > 0$ e a colocação de novas moléculas de gás resultaria em \textit{redução} de entropia. De outra parte, caso for $\ppv>2$ ($N\leq V/2$), a adição de novas moléculas \textit{aumenta} a entropia do sistema!
+        
+        Isto é facilmente explicado pela entropia de Boltzmann. Quando menos da metade dos sítios estão ocupados, há muito espaço disponível, logo a colocação de novas moléculas aumenta a multiplicidade e, consequentemente, a entropia. Mas se mais da metade já foi ocupada, o sistema está ficando `entupido', e adicionar novas moléculas reduz drasticamente as opções de alocação, reduzindo a entropia.
+
+        \begin{center}
+        \setcaptiontype{figure}
+        \PlotFig[%
+            xlabel={Volume $\ppv$},
+            ylabel={$\mu\,\,(k_BT)$},
+            domain=0.98:4.1,
+            width=0.52\linewidth]
+            {-ln(x-1)}
+            [MediumRed]
+        \PlotFig[%
+            xlabel={Número de partículas $N\,\,(V)$},
+            ylabel={$S\,\,(k_B)$},
+            domain=-0.05:0.9,
+            width=0.52\linewidth]
+            {x*(ln(1/x-1)-(1/x)*ln(1-x))}
+        \caption{À esquerda, entropia; à direita, potencial químico.}
+        \end{center}
 
         \noindent\textbf{(b)}\\
         \indent Pelo cálculo acima, podemos escrever
         \[\pps = k_B\left[\ln(\ppv-1)-\ppv\ln\left(1-\frac{1}{\ppv}\right)\right]\,,\]
         de modo que a pressão pode ser calculada como:
-        \[\frac{p}{T} = \pderivative{\pps}{\ppv} = k_B\left(\frac{1}{\ppv-1}-\ln\left(1-\frac{1}{\ppv}\right)-\frac{1}{v-1}\right) = -k_B\ln\left(1-\frac{1}{v}\right)\,.\]
-        Finalmente, no limite de gás de baixa densidade ($\ppv\gg 1$), temos
-        \[\frac{p}{T}\approx = k_B \ppv \Longrightarrow pV=k_BNT\,,\]
+        \begin{align*}
+            \frac{p}{T} =& \pderivative{\pps}{\ppv} = k_B\left(\frac{1}{\ppv-1}-\ln\left(1-\frac{1}{\ppv}\right)-\frac{1}{v-1}\right) =\\ =&-k_B\ln\left(1-\frac{1}{v}\right) = k_B\left[\frac{1}{\ppv}+\frac{1}{\ppv}^2+\cdots\right]\,.
+        \end{align*}
+        Finalmente, no limite de gás de baixa densidade ($\ppv\gg 1$), prevalece o termo linear e ficamos com:
+        \[\frac{p}{T}\approx k_B \ppv = k_B\frac{V}{N}\Longrightarrow pV=k_BNT\,,\]
         como queríamos mostrar.
     \end{solved}
 
