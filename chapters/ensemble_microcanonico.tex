@@ -227,6 +227,8 @@
         =-&\frac{k_B}{2\upmu_m\mathrm{H}}\ln\left(\frac{1+\ppu/\upmu_m\mathrm{H}}{1-\ppu/\upmu_m\mathrm{H}}\right) = -\frac{k_B}{\upmu_m\mathrm{H}}\tanh^{-1}\left(\frac{\ppu}{\upmu_m\mathrm{H}}\right)\,.
         \end{align*}
         Isto é, encontramos uma função que pode assumir valores positivos e negativos.
+
+        A função $\tanh^{-1}$ está definida no intervalo $(-1,1)$, de modo que a temperatura que encontramos é finita para valores de energia nos intervalos \[ -\upmu_m\mathrm{H}\leq\ppu<0\,,\text{ e }\,0<\ppu\leq\upmu_m\mathrm{H}\,,\] em que temos $T>0$ para $\ppu<0$, e $T<0$ para $0<\ppu$, $T<0$. Nos deparamos, assim, com um paradoxo: a princípio, nosso sistema tem uma temperatura que não está positivamente definida. Como explicar esta contradição com a termodinâmica clássica? A \cref{fig:paramagnetic_salt_entropy_temperature_plot} mostra este comportamento patológico e nos ajudará a resolver esta questão.
         
         \begin{center}
         \setcaptiontype{figure}
@@ -239,14 +241,24 @@
             \hfill%
         \PlotFig[%
             xlabel={Energia $\ppu\,\,(\upmu_m\mathrm{H})$},
-            ylabel={$1/T\,\,(k_B/\upmu_m\mathrm{H})$},
+            ylabel={$T\,\,(k_B/\upmu_m\mathrm{H})$},
             domain=-0.999:0.999,
             width=0.58\linewidth]
-            {-ln((1+x)/(1-x))}
+            {-1/ln((1+x)/(1-x))}
             [MediumRed]
-        \caption{À esquerda, a entropia em função da energia $\ppu$ (em unidades de $\upmu_m\mathrm{H}$); à direita, a temperatura em função da energia $\ppu$ (em unidades de $\upmu_m\mathrm{H}$).}
+        \caption{À esquerda, a entropia em função da energia $\ppu$ (em unidades de $\upmu_m\mathrm{H}$); à direita, a temperatura em função da energia $\ppu$ (em unidades de $\upmu_m\mathrm{H}$). Chamamos a atenção para o decrescimento de $\pps$ para valores positivos da energia: um comportamento patológico!}
+        \label{fig:paramagnetic_salt_entropy_temperature_plot}
         \end{center}
         
+        Para qualquer valor de energia $\ppu<0$, podemos encontrar uma temperatura positva $T>0$. Isso significa que \textit{sempre} conseguimos criar (imaginar) um reservatório térmico (no sentido clássico) que leva o sistema a atingir o equilíbrio com estes valores definidos de $\ppu$ e $\pps$. Em outras palavras, a região $\ppu<0$ corresponde a uma situação de equilíbrio termodinâmico.
+
+        Mas e quanto à região $\ppu>0$? Aqui, vamos recorrer a um argumento heurístico; o leitor deve consultar o \cref{problem:negative_temperatures} para uma elaboração detalhada desta questão.
+        
+        Colocando um sistema com $\ppu>0$ em contato com um reservatório a uma temperatura $T>0$, recorremos à segunda lei da termodinâmica: o calor flui na direção de aumento da entropia. Como vemos na \cref{fig:paramagnetic_salt_entropy_temperature_plot}, no domínio $\ppu>0$ a entropia aumenta \textit{somente} se há diminuição na energia $\ppu$; isto é, se $\ppu_f<\ppu_i$. Isso significa que este sistema, mesmo com temperatura negativa, \textit{cede} energia para o reservatório.
+        
+        Por sua vez, o reservatório mantém sua temperatura $T>0$ inalterada\footnote{Por definição o reservatório é muito maior que o sistema e não faz diferença a energia que ganha ou perde em sua temperatura}. Isso quer dizer que o equilíbrio termodinâmico é obtido quando o sistema doar energia suficiente para que sua temperatura se iguala à do reservatório. Como isto acontece para qualquer valor de $\ppu>0$, vemos que qualquer sistema com valor negativo de temperatura \textit{não pode} estar em equilíbrio térmico com um dado reservatório.
+        
+        Com este exercício pretendemos mostrar a ideia das temperaturas negativas que aparecem em sistemas com limitantes inferior e superior da eneriga. Esta discussão facilmente pode se estender e se desdobrar em temas muito interessantes, mas que não cabem aqui. Recomendamos, novamente, que o leitor interessado recorra ao \cref{problem:negative_temperatures}.
 
     \end{solved}
 
@@ -297,6 +309,8 @@
         
         Isto é facilmente explicado pela entropia de Boltzmann. Quando menos da metade dos sítios estão ocupados, há muito espaço disponível, logo a colocação de novas moléculas aumenta a multiplicidade e, consequentemente, a entropia. Mas se mais da metade já foi ocupada, o sistema está ficando `entupido', e adicionar novas moléculas reduz drasticamente as opções de alocação, reduzindo a entropia.
 
+        A \cref{fig:lattice_gas_chemical_potential} mostra este comportamento. O valor $\ppv=2$ ($N=\frac{1}{2}V$), que dá $\mu=0$, corresponde ao máximo da entropia como função de $N$. Veja que, diferentemente da temperatura, não há problema algum o potencial químico $\mu$ assumir valores negativos.
+
         \begin{center}
         \setcaptiontype{figure}
         \PlotFig[%
@@ -306,13 +320,16 @@
             width=0.52\linewidth]
             {-ln(x-1)}
             [MediumRed]
-        \PlotFig[%
+        \DrawPlot[%
             xlabel={Número de partículas $N\,\,(V)$},
             ylabel={$S\,\,(k_B)$},
             domain=-0.05:0.9,
-            width=0.52\linewidth]
-            {x*(ln(1/x-1)-(1/x)*ln(1-x))}
+            width=0.52\linewidth]{
+                \addplot[ThemeColor, very thick] {x*(ln(1/x-1)-(1/x)*ln(1-x))};
+                \draw[dashed] (0.5,0) -- (0.5,0.8);
+            }
         \caption{À esquerda, entropia; à direita, potencial químico.}
+        \label{fig:lattice_gas_chemical_potential}
         \end{center}
 
         \noindent\textbf{(b)}\\
@@ -337,7 +354,7 @@
         \[ \Omega(U,N)=\frac{1}{h^{N}}\int\int_{\text{Energia }U} \diff \X_1\diff \X_2\cdots\diff \X_N\diff \p_1\diff \p_2\cdots\diff \p_N,\] onde $h$ é a constante de Planck.
     \end{statementbox}
 
-    \begin{solved}{Multiplicidade do oscilador harmônico unidimensional}{}
+    \begin{example}{Multiplicidade do oscilador harmônico unidimensional}{}
         Considere um único oscilador harmônico unidimensional de massa $m$ e frequência $\omega$ tem energia fixa, dada por \[U=\frac{\p^2}{2m}+\frac{1}{2}m\omega^2\X^2.\] Determine a multiplicidade deste sistema.
         \tcblower
         \noindent\textbf{Resolução:}\\
@@ -350,7 +367,7 @@
             {\input{figures/oscilador_harmonico_espaco_de_fase}}%
             [Espaço de fase de um oscilador harmônico unidimensional.]%
             [oscilador_harmonico_espaco_de_fase]
-    \end{solved}
+    \end{example}
 
     \begin{solved}{Multiplicidade de uma partícula de gás ideal}{}
         Considere uma partícula com massa $m$ e energia \[U=\frac{\vec{\p}^2}{2m},\] contida num volume $V$. Determine a multiplicidade deste sistema.
@@ -400,6 +417,12 @@
 \end{questionsbox}
 
 \section*{Problemas Propostos}
+
+\begin{problem}[subtitle={Temperaturas negativas}]
+\label{problem:negative_temperatures}
+
+
+\end{problem}
 
 \begin{problem}[subtitle={Teorema do retorno de Poicaré}]
 
